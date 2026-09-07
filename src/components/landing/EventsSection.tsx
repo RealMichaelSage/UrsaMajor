@@ -24,7 +24,7 @@ export function EventsSection({ onOpenEventModal }: EventsSectionProps) {
 
     async function fetchTopEvents() {
       try {
-        const res = await fetch("/api/events?limit=3");
+        const res = await fetch("/ursa/api/events/?limit=3");
         if (res.ok) {
           const data = await res.json();
           if (isMounted && data.success && Array.isArray(data.events) && data.events.length > 0) {

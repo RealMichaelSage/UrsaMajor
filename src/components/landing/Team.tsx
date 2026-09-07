@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { BOARD_MEMBERS } from "./data";
 import { Button } from "@/components/ui/button";
+import { getAssetUrl } from "@/shared/lib/assets";
 
 export interface TeamProps {
   onOpenApplicationModal: () => void;
@@ -34,7 +35,7 @@ export function Team({ onOpenApplicationModal }: TeamProps) {
               {/* Photo Portrait */}
               <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden mb-4 border-2 border-gray-100 group-hover:border-[#f8173f] transition-colors">
                 <Image
-                  src={member.photo}
+                  src={getAssetUrl(member.photo)}
                   alt={member.name}
                   fill
                   className="object-cover transition-transform group-hover:scale-105 duration-300"

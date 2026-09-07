@@ -17,8 +17,8 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "АПУВИР Большая Медведица" }],
   icons: {
-    icon: "/assets/ursa-major-logo.svg",
-    apple: "/assets/ursa-major-logo.svg",
+    icon: "/ursa/assets/ursa-major-logo.svg",
+    apple: "/ursa/assets/ursa-major-logo.svg",
   },
   openGraph: {
     title: "АПУВИР 'Большая Медведица' — Ассоциация венчурного рынка",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     siteName: "Большая Медведица",
     images: [
       {
-        url: "/assets/ursa-major-logo.svg",
+        url: "/ursa/assets/ursa-major-logo.svg",
         width: 800,
         height: 600,
       },

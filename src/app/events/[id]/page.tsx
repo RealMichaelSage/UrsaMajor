@@ -20,6 +20,7 @@ import {
   buildTicketUrl,
   sanitizeUrl,
   DEFAULT_POSTER,
+  DEFAULT_EVENTS,
 } from "@/components/events/utils";
 import type { EventItem } from "@/shared/types";
 
@@ -57,14 +58,18 @@ async function getEvent(id: string): Promise<EventItem | null> {
     const db = getDb();
     const rawEvents = await db.query.events.findMany();
     const found = rawEvents.find((e) => e.id === id);
-    if (!found || found.status === "rejected") {
-      return null;
+    if (found && found.status !== "rejected") {
+      return formatEvent(found);
     }
-    return formatEvent(found);
   } catch (err) {
-    console.error("[getEvent] Error:", err);
-    return null;
+    // fallback to DEFAULT_EVENTS
   }
+  const defaultFound = DEFAULT_EVENTS.find((e) => e.id === id);
+  return (defaultFound as unknown as EventItem) || null;
+}
+
+export function generateStaticParams() {
+  return DEFAULT_EVENTS.map((e) => ({ id: e.id }));
 }
 
 export async function generateMetadata({

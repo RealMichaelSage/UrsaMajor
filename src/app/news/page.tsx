@@ -53,7 +53,7 @@ export default function NewsFeedPage() {
     async function fetchNews() {
       try {
         setIsLoading(true);
-        const res = await fetch("/api/news?limit=50");
+        const res = await fetch("/ursa/api/news/?limit=50");
         if (res.ok) {
           const data = await res.json();
           const items = data.news || data.articles;

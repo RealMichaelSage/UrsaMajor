@@ -21,6 +21,7 @@ import {
   sanitizeUrl,
   DEFAULT_POSTER,
 } from "./utils";
+import { getAssetUrl } from "@/shared/lib/assets";
 
 export interface EventModalProps {
   isOpen: boolean;
@@ -30,11 +31,11 @@ export interface EventModalProps {
 
 export function EventModal({ isOpen, event, onClose }: EventModalProps) {
   const [copied, setCopied] = useState(false);
-  const [imgSrc, setImgSrc] = useState<string>(event?.imageUrl || DEFAULT_POSTER);
+  const [imgSrc, setImgSrc] = useState<string>(getAssetUrl(event?.imageUrl) || DEFAULT_POSTER);
 
   useEffect(() => {
     if (event?.imageUrl) {
-      setImgSrc(event.imageUrl);
+      setImgSrc(getAssetUrl(event.imageUrl));
     } else {
       setImgSrc(DEFAULT_POSTER);
     }

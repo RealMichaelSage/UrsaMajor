@@ -72,45 +72,88 @@ export default function EventsCatalogClient() {
       q.set("page", String(currentPage));
       q.set("limit", String(pageSize));
 
-      const res = await fetch(`/api/events?${q.toString()}`);
-      if (res.ok) {
-        const data = await res.json();
-        if (data.success && Array.isArray(data.events)) {
-          setEvents(data.events);
-          const total = data.total || data.pagination?.totalCount || data.events.length;
-          setTotalCount(total);
-          setTotalPages(Math.ceil(total / pageSize) || 1);
+      let apiDataLoaded = false;
+      try {
+        const res = await fetch(`/ursa/api/events/?${q.toString()}`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success && Array.isArray(data.events)) {
+            let processedEvents: EventItem[] = data.events;
+            if (
+              currentFilters.format !== "all" ||
+              currentFilters.price !== "all" ||
+              currentFilters.category !== "all" ||
+              currentFilters.resident !== "all" ||
+              Boolean(currentFilters.search)
+            ) {
+              if (currentFilters.format === "online") processedEvents = processedEvents.filter((e) => e.isOnline);
+              if (currentFilters.format === "offline") processedEvents = processedEvents.filter((e) => !e.isOnline);
+              if (currentFilters.price !== "all") processedEvents = processedEvents.filter((e) => e.priceType === currentFilters.price);
+              if (currentFilters.category !== "all") processedEvents = processedEvents.filter((e) => e.category === currentFilters.category);
+              if (currentFilters.resident !== "all") processedEvents = processedEvents.filter((e) => e.residentOrganizer === currentFilters.resident);
+              if (currentFilters.search) {
+                const s = currentFilters.search.toLowerCase();
+                processedEvents = processedEvents.filter(
+                  (e) =>
+                    e.title.toLowerCase().includes(s) ||
+                    (e.description && e.description.toLowerCase().includes(s)) ||
+                    (e.location && e.location.toLowerCase().includes(s)) ||
+                    (e.residentOrganizer && e.residentOrganizer.toLowerCase().includes(s))
+                );
+              }
+            }
+            const start = (currentPage - 1) * pageSize;
+            setEvents(processedEvents.slice(start, start + pageSize));
+            setTotalCount(processedEvents.length);
+            setTotalPages(Math.ceil(processedEvents.length / pageSize) || 1);
+            apiDataLoaded = true;
 
-          // Check if ?event=[id] is present in URL to open modal on deep-link
-          const eventIdParam = new URLSearchParams(window.location.search).get("event");
-          if (eventIdParam) {
-            const matched = data.events.find((e: EventItem) => e.id === eventIdParam);
-            if (matched) {
-              setSelectedEvent(matched);
-              setIsDetailModalOpen(true);
+            // Check if ?event=[id] is present in URL to open modal on deep-link
+            const eventIdParam = new URLSearchParams(window.location.search).get("event");
+            if (eventIdParam) {
+              const matched = data.events.find((e: EventItem) => e.id === eventIdParam);
+              if (matched) {
+                setSelectedEvent(matched);
+                setIsDetailModalOpen(true);
+              }
             }
           }
         }
+      } catch {
+        // Fallback to local filtering
       }
-    } catch (err) {
-      console.warn("[EventsCatalog] Live API unreachable, using default curated events:", err);
-      let filtered = [...(DEFAULT_EVENTS as unknown as EventItem[])];
-      if (currentFilters.format === "online") filtered = filtered.filter((e) => e.isOnline);
-      if (currentFilters.format === "offline") filtered = filtered.filter((e) => !e.isOnline);
-      if (currentFilters.price !== "all") filtered = filtered.filter((e) => e.priceType === currentFilters.price);
-      if (currentFilters.category !== "all") filtered = filtered.filter((e) => e.category === currentFilters.category);
-      if (currentFilters.resident !== "all") filtered = filtered.filter((e) => e.residentOrganizer === currentFilters.resident);
-      if (currentFilters.search) {
-        const s = currentFilters.search.toLowerCase();
-        filtered = filtered.filter(
-          (e) =>
-            e.title.toLowerCase().includes(s) ||
-            (e.description && e.description.toLowerCase().includes(s))
-        );
+
+      if (!apiDataLoaded) {
+        let filtered = [...(DEFAULT_EVENTS as unknown as EventItem[])];
+        if (currentFilters.format === "online") filtered = filtered.filter((e) => e.isOnline);
+        if (currentFilters.format === "offline") filtered = filtered.filter((e) => !e.isOnline);
+        if (currentFilters.price !== "all") filtered = filtered.filter((e) => e.priceType === currentFilters.price);
+        if (currentFilters.category !== "all") filtered = filtered.filter((e) => e.category === currentFilters.category);
+        if (currentFilters.resident !== "all") filtered = filtered.filter((e) => e.residentOrganizer === currentFilters.resident);
+        if (currentFilters.search) {
+          const s = currentFilters.search.toLowerCase();
+          filtered = filtered.filter(
+            (e) =>
+              e.title.toLowerCase().includes(s) ||
+              (e.description && e.description.toLowerCase().includes(s)) ||
+              (e.location && e.location.toLowerCase().includes(s)) ||
+              (e.residentOrganizer && e.residentOrganizer.toLowerCase().includes(s))
+          );
+        }
+        const start = (currentPage - 1) * pageSize;
+        setEvents(filtered.slice(start, start + pageSize));
+        setTotalCount(filtered.length);
+        setTotalPages(Math.ceil(filtered.length / pageSize) || 1);
+
+        const eventIdParam = new URLSearchParams(window.location.search).get("event");
+        if (eventIdParam) {
+          const matched = filtered.find((e: EventItem) => e.id === eventIdParam);
+          if (matched) {
+            setSelectedEvent(matched);
+            setIsDetailModalOpen(true);
+          }
+        }
       }
-      setEvents(filtered);
-      setTotalCount(filtered.length);
-      setTotalPages(Math.ceil(filtered.length / pageSize) || 1);
     } finally {
       setLoading(false);
     }

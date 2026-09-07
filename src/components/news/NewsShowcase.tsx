@@ -31,7 +31,7 @@ export function NewsShowcase({ initialArticles }: NewsShowcaseProps) {
     let isMounted = true;
     async function loadLatestNews() {
       try {
-        const res = await fetch("/api/news?limit=3");
+        const res = await fetch("/ursa/api/news/?limit=3");
         if (res.ok) {
           const data = await res.json();
           const items = data.news || data.articles;

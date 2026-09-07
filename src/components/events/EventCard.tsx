@@ -19,6 +19,7 @@ import {
   sanitizeUrl,
   buildTicketUrl,
 } from "./utils";
+import { getAssetUrl } from "@/shared/lib/assets";
 
 export { DEFAULT_POSTER, formatEventDateTime, sanitizeUrl, buildTicketUrl };
 
@@ -39,7 +40,7 @@ export interface EventCardProps {
 }
 
 export function EventCard({ event, onSelect, className = "" }: EventCardProps) {
-  const [imgSrc, setImgSrc] = useState<string>(event.imageUrl || DEFAULT_POSTER);
+  const [imgSrc, setImgSrc] = useState<string>(getAssetUrl(event.imageUrl) || DEFAULT_POSTER);
 
   const formattedDate = formatEventDateTime(event.startAt);
   const ticketUrl = buildTicketUrl(event.paymentUrl, event.sourceUrl);

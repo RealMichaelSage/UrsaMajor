@@ -1,8 +1,11 @@
 import type { NextConfig } from "next";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "/ursa";
+
 const nextConfig: NextConfig = {
-  serverExternalPackages: ['pg', 'pg-pool', 'drizzle-orm', 'sharp', 'playwright', '@google/genai'],
+  basePath,
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
@@ -14,6 +17,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  serverExternalPackages: ['pg', 'pg-pool', 'drizzle-orm', 'sharp', 'playwright', '@google/genai'],
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {

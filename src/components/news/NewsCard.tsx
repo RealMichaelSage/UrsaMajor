@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Clock, ArrowUpRight, Building2, Tag } from "lucide-react";
 import type { NewsArticle } from "@/shared/types";
+import { getAssetUrl } from "@/shared/lib/assets";
 
 export interface NewsCardProps {
   article: NewsArticle;
@@ -35,7 +36,7 @@ export function NewsCard({ article, featured = false, className = "" }: NewsCard
   const readTime = calculateReadingTime(article.content || article.summary);
   const formattedDate = formatRussianDate(article.publishedAt);
   const primaryTag = article.tags && article.tags.length > 0 ? article.tags[0] : "Аналитика";
-  const imageSrc = article.imageUrl || "/assets/news/default-news.jpg";
+  const imageSrc = getAssetUrl(article.imageUrl || "/assets/news/default-news.jpg");
 
   return (
     <article

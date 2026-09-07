@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { RESIDENT_PARTNERS } from "./data";
 import { Badge } from "@/components/ui/badge";
+import { getAssetUrl } from "@/shared/lib/assets";
 
 export function Partners() {
   return (
@@ -32,7 +33,7 @@ export function Partners() {
                 <div className="flex items-center justify-between gap-4 mb-6">
                   <div className="relative h-12 w-28 sm:w-32 flex items-center">
                     <Image
-                      src={partner.logo}
+                      src={getAssetUrl(partner.logo)}
                       alt={partner.name}
                       width={120}
                       height={48}
