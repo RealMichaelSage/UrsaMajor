@@ -124,7 +124,7 @@ export function Header({ onOpenApplicationModal }: HeaderProps = {}) {
           </div>
 
           <Link
-            href="#events"
+            href="/events"
             className="py-2 hover:text-[#f8173f] transition-colors"
           >
             Мероприятия
@@ -202,7 +202,7 @@ export function Header({ onOpenApplicationModal }: HeaderProps = {}) {
 
             <div className="pt-4 border-t border-gray-100 space-y-4">
               <Link
-                href="#events"
+                href="/events"
                 onClick={() => setMobileMenuOpen(false)}
                 className="block text-lg font-medium text-[#111111] hover:text-[#f8173f]"
               >

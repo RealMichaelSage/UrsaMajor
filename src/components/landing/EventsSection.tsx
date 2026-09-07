@@ -131,14 +131,30 @@ export function EventsSection({ onOpenEventModal }: EventsSectionProps) {
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {events.map((event) => (
-              <EventCard
-                key={event.id}
-                event={event}
-                onSelect={handleSelectEvent}
-              />
-            ))}
+          <div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {events.slice(0, 3).map((event) => (
+                <EventCard
+                  key={event.id}
+                  event={event}
+                  onSelect={handleSelectEvent}
+                />
+              ))}
+            </div>
+
+            {/* Bottom Centered CTA Button to All Events */}
+            <div className="mt-12 text-center">
+              <Link href="/events">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="min-w-[280px] h-[54px] text-sm font-semibold tracking-wider hover:bg-[#f8173f] hover:text-white hover:border-[#f8173f] transition-all inline-flex items-center justify-center gap-2"
+                >
+                  <span>ВСЕ МЕРОПРИЯТИЯ КАТАЛОГА</span>
+                  <ArrowUpRight className="w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
           </div>
         )}
       </div>

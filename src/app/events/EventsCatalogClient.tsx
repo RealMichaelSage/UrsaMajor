@@ -11,6 +11,7 @@ import { PrivacyModal } from "@/components/landing/PrivacyModal";
 import { EventCard } from "@/components/events/EventCard";
 import { EventModal } from "@/components/events/EventModal";
 import { EventFilters, FilterState } from "@/components/events/EventFilters";
+import { DEFAULT_EVENTS } from "@/components/events/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar, Plus, ChevronLeft, ChevronRight, Layers } from "lucide-react";
 import type { EventItem } from "@/shared/types";
@@ -27,10 +28,10 @@ export default function EventsCatalogClient() {
     search: searchParams.get("search") || "",
   }));
 
-  const [events, setEvents] = useState<EventItem[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [events, setEvents] = useState<EventItem[]>(DEFAULT_EVENTS as unknown as EventItem[]);
+  const [loading, setLoading] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
-  const [totalCount, setTotalCount] = useState<number>(0);
+  const [totalCount, setTotalCount] = useState<number>(DEFAULT_EVENTS.length);
   const [totalPages, setTotalPages] = useState<number>(1);
   const pageSize = 12;
 
@@ -92,7 +93,24 @@ export default function EventsCatalogClient() {
         }
       }
     } catch (err) {
-      console.error("[EventsCatalog] Fetch error:", err);
+      console.warn("[EventsCatalog] Live API unreachable, using default curated events:", err);
+      let filtered = [...(DEFAULT_EVENTS as unknown as EventItem[])];
+      if (currentFilters.format === "online") filtered = filtered.filter((e) => e.isOnline);
+      if (currentFilters.format === "offline") filtered = filtered.filter((e) => !e.isOnline);
+      if (currentFilters.price !== "all") filtered = filtered.filter((e) => e.priceType === currentFilters.price);
+      if (currentFilters.category !== "all") filtered = filtered.filter((e) => e.category === currentFilters.category);
+      if (currentFilters.resident !== "all") filtered = filtered.filter((e) => e.residentOrganizer === currentFilters.resident);
+      if (currentFilters.search) {
+        const s = currentFilters.search.toLowerCase();
+        filtered = filtered.filter(
+          (e) =>
+            e.title.toLowerCase().includes(s) ||
+            (e.description && e.description.toLowerCase().includes(s))
+        );
+      }
+      setEvents(filtered);
+      setTotalCount(filtered.length);
+      setTotalPages(Math.ceil(filtered.length / pageSize) || 1);
     } finally {
       setLoading(false);
     }
