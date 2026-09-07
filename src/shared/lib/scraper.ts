@@ -105,11 +105,35 @@ function decodeHtmlEntities(text: string): string {
     .replace(/&nbsp;/g, ' ');
 }
 
+export interface NormalizedTelegramSource {
+  channel: string;
+  webviewUrl: string;
+  isPrivate?: boolean;
+  chatId?: string;
+  messageId?: string;
+}
+
 /**
- * Normalizes Telegram channel identifier into public webview URL: https://t.me/s/<channel>
+ * Normalizes Telegram channel identifier into public webview URL or detects private chat
  */
-export function normalizeTelegramWebviewUrl(input: string): { channel: string; webviewUrl: string } {
+export function normalizeTelegramWebviewUrl(input: string): NormalizedTelegramSource {
   let cleaned = input.trim();
+
+  // Check for private chat link: t.me/c/2103289961/7
+  const privateMatch = cleaned.match(/(?:https?:\/\/)?t\.me\/c\/(\d+)(?:\/(\d+))?/i);
+  if (privateMatch) {
+    const rawChatId = privateMatch[1];
+    const messageId = privateMatch[2];
+    const fullChatId = `-100${rawChatId}`;
+    return {
+      channel: `c/${rawChatId}`,
+      webviewUrl: `https://t.me/c/${rawChatId}${messageId ? `/${messageId}` : ''}`,
+      isPrivate: true,
+      chatId: fullChatId,
+      messageId,
+    };
+  }
+
   // Strip protocol and domain if present
   cleaned = cleaned.replace(/^https?:\/\//i, '');
   cleaned = cleaned.replace(/^t\.me\/(?:s\/)?/i, '');
@@ -120,6 +144,7 @@ export function normalizeTelegramWebviewUrl(input: string): { channel: string; w
   return {
     channel: cleaned,
     webviewUrl: `https://t.me/s/${cleaned}`,
+    isPrivate: false,
   };
 }
 
@@ -212,18 +237,23 @@ export function parseTelegramWebviewHtml(html: string, defaultChannel: string = 
  * Scrapes public Telegram channel using native HTTP fetch (Zero Bot API required)
  */
 export async function scrapeTelegramWebview(channelUrlOrHandle: string): Promise<ScrapedPost[]> {
-  const { channel, webviewUrl } = normalizeTelegramWebviewUrl(channelUrlOrHandle);
+  const normalized = normalizeTelegramWebviewUrl(channelUrlOrHandle);
 
-  if (!channel) {
+  if (!normalized.channel) {
     throw new Error(`Invalid Telegram channel handle or URL: "${channelUrlOrHandle}"`);
   }
 
-  if (!isSafeExternalUrl(webviewUrl)) {
-    throw new Error(`Unsafe Telegram webview URL: ${webviewUrl}`);
+  if (normalized.isPrivate) {
+    console.log(`[Scraper] Source is private Telegram chat ${normalized.chatId}. Bot access required for real-time ingestion.`);
+    return [];
+  }
+
+  if (!isSafeExternalUrl(normalized.webviewUrl)) {
+    throw new Error(`Unsafe Telegram webview URL: ${normalized.webviewUrl}`);
   }
 
   try {
-    const res = await fetch(webviewUrl, {
+    const res = await fetch(normalized.webviewUrl, {
       signal: AbortSignal.timeout(15000),
       headers: {
         'User-Agent':
@@ -235,13 +265,13 @@ export async function scrapeTelegramWebview(channelUrlOrHandle: string): Promise
     });
 
     if (!res.ok) {
-      throw new Error(`Telegram webview HTTP ${res.status} for ${webviewUrl}`);
+      throw new Error(`Telegram webview HTTP ${res.status} for ${normalized.webviewUrl}`);
     }
 
     const html = await res.text();
-    return parseTelegramWebviewHtml(html, channel);
+    return parseTelegramWebviewHtml(html, normalized.channel);
   } catch (error) {
-    console.error(`[Scraper] Failed to fetch Telegram channel "${channel}":`, error);
+    console.error(`[Scraper] Failed to fetch Telegram channel "${normalized.channel}":`, error);
     return [];
   }
 }

@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { UrsaEmblem } from "./UrsaEmblem";
 
 export interface HeaderProps {
   onOpenApplicationModal?: () => void;
@@ -58,15 +58,7 @@ export function Header({ onOpenApplicationModal }: HeaderProps = {}) {
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo & Emblem */}
         <Link href="/" className="flex items-center space-x-3 group">
-          <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0">
-            <Image
-              src="/assets/ursa-emblem.svg"
-              alt="Большая Медведица"
-              fill
-              priority
-              className="object-contain"
-            />
-          </div>
+          <UrsaEmblem className="w-8 h-8 sm:w-10 sm:h-10 text-[#010207] group-hover:text-[#f8173f] transition-colors flex-shrink-0" />
           <div className="flex flex-col">
             <span className="text-xs tracking-[0.2em] font-medium text-gray-500 uppercase">
               Ассоциация

@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUp } from "lucide-react";
+import { UrsaEmblem } from "./UrsaEmblem";
 
 export interface FooterProps {
   onOpenPrivacy?: () => void;
@@ -20,14 +20,7 @@ export function Footer({ onOpenPrivacy }: FooterProps) {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Logo & Legal Name */}
           <div className="flex items-center space-x-4">
-            <div className="relative w-10 h-10 flex-shrink-0">
-              <Image
-                src="/assets/ursa-major-logo.svg"
-                alt="Большая Медведица"
-                fill
-                className="object-contain"
-              />
-            </div>
+            <UrsaEmblem className="w-10 h-10 text-[#010207] flex-shrink-0" />
             <div>
               <span className="font-bold text-base text-[#111111] uppercase tracking-tight block">
                 АПУВИР &quot;Большая Медведица&quot;
