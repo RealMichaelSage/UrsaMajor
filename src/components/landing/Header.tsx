@@ -41,12 +41,12 @@ export function Header({ onOpenApplicationModal }: HeaderProps = {}) {
   }, [mobileMenuOpen]);
 
   const aboutSubmenu = [
-    { title: "Цели", href: "#goals" },
-    { title: "Планы", href: "#roadmap" },
-    { title: "Совместные продукты", href: "#product" },
-    { title: "Резиденты", href: "#partners" },
-    { title: "Преимущества", href: "#benefit" },
-    { title: "Правление", href: "#team" },
+    { title: "Цели", href: "/#goals" },
+    { title: "Планы", href: "/#roadmap" },
+    { title: "Совместные продукты", href: "/#product" },
+    { title: "Резиденты", href: "/#partners" },
+    { title: "Преимущества", href: "/#benefit" },
+    { title: "Правление", href: "/#team" },
   ];
 
   return (
@@ -57,10 +57,10 @@ export function Header({ onOpenApplicationModal }: HeaderProps = {}) {
     >
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo & Emblem */}
-        <Link href="#up" className="flex items-center space-x-3 group">
+        <Link href="/" className="flex items-center space-x-3 group">
           <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0">
             <Image
-              src="/assets/ursa-major-logo.svg"
+              src="/assets/ursa-emblem.svg"
               alt="Большая Медведица"
               fill
               priority
@@ -79,6 +79,12 @@ export function Header({ onOpenApplicationModal }: HeaderProps = {}) {
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center space-x-7 text-sm font-medium text-[#111111]">
+          <Link
+            href="/"
+            className="py-2 hover:text-[#f8173f] transition-colors"
+          >
+            Главная
+          </Link>
           {/* Dropdown "О нас" */}
           <div
             className="relative"
@@ -144,15 +150,6 @@ export function Header({ onOpenApplicationModal }: HeaderProps = {}) {
           >
             Вступление
           </button>
-
-          <a
-            href="https://ursa-major.ru/ens2026"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="py-2 text-gray-500 hover:text-[#f8173f] transition-colors flex items-center space-x-1"
-          >
-            <span>Expand North Star 2026</span>
-          </a>
         </nav>
 
         {/* Action Button & Burger Toggle */}
@@ -186,6 +183,13 @@ export function Header({ onOpenApplicationModal }: HeaderProps = {}) {
       {mobileMenuOpen && (
         <div className="fixed inset-0 top-[60px] z-50 bg-white flex flex-col p-6 overflow-y-auto lg:hidden animate-fade-in border-t border-gray-200">
           <div className="flex flex-col space-y-4 pb-8">
+            <Link
+              href="/"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-lg font-bold text-[#111111] hover:text-[#f8173f] pb-2 border-b border-gray-100"
+            >
+              Главная
+            </Link>
             <div className="text-xs uppercase tracking-widest text-gray-400 font-semibold mb-1">
               О нас
             </div>
@@ -225,14 +229,6 @@ export function Header({ onOpenApplicationModal }: HeaderProps = {}) {
               >
                 Вступление
               </button>
-              <a
-                href="https://ursa-major.ru/ens2026"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-base text-gray-500 hover:text-[#f8173f]"
-              >
-                Expand North Star 2026 ↗
-              </a>
             </div>
           </div>
 

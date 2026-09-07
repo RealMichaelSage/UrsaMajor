@@ -184,31 +184,38 @@ export default function EventsCatalogClient() {
     <div className="min-h-screen flex flex-col bg-[#fbfbf9] text-[#111111]">
       <Header onOpenApplicationModal={() => setIsAppModalOpen(true)} />
 
-      <main className="flex-1 max-w-[1240px] w-full mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-12 sm:pb-16 space-y-8">
-        {/* Page Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-gray-200">
-          <div>
-            <div className="flex items-center gap-2 text-xs font-bold text-[#f8173f] uppercase tracking-wider mb-2">
-              <Layers className="w-4 h-4" />
-              <span>Каталог ассоциации</span>
-            </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1a2e35] tracking-tight">
+      <main className="flex-1 max-w-[1240px] w-full mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-36 pb-16 sm:pb-24 space-y-8">
+        {/* Page Header matching Ursa Major Design System */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-gray-200">
+          <div className="max-w-3xl">
+            {/* Breadcrumb Navigation */}
+            <nav className="flex items-center space-x-2 text-xs text-gray-500 uppercase tracking-wider mb-6">
+              <Link href="/" className="hover:text-[#f8173f] transition-colors">
+                Главная
+              </Link>
+              <ChevronRight className="w-3.5 h-3.5 text-gray-400" />
+              <span className="text-gray-900 font-medium">Мероприятия ассоциации</span>
+            </nav>
+            <div className="w-12 h-1 bg-[#f8173f] mb-6" />
+            <span className="text-xs sm:text-sm uppercase tracking-[0.18em] font-normal text-gray-800 block mb-2">
+              Ассоциация профессиональных участников инвестиционного рынка
+            </span>
+            <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-[#111111] tracking-tight uppercase mb-4">
               Мероприятия и события
             </h1>
-            <p className="text-sm sm:text-base text-gray-600 font-light mt-2 max-w-2xl leading-relaxed">
+            <p className="text-base sm:text-lg font-light text-gray-600 leading-relaxed">
               Инвестиционные питч-сессии, закрытые встречи бизнес-ангелов, образовательные практикумы и венчурные форумы участников «Большой Медведицы».
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 flex-shrink-0">
             <Button
               variant="outline"
               size="md"
               onClick={() => setIsSubmissionModalOpen(true)}
-              className="text-xs font-semibold tracking-wider uppercase flex items-center gap-1.5"
+              className="text-xs sm:text-sm font-semibold tracking-wider uppercase whitespace-nowrap"
             >
-              <Plus className="w-4 h-4 text-[#f8173f]" />
-              <span>Разместить мероприятие</span>
+              РАЗМЕСТИТЬ МЕРОПРИЯТИЕ
             </Button>
           </div>
         </div>

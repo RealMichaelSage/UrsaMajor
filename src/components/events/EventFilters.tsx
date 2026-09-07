@@ -74,18 +74,18 @@ export function EventFilters({
     Boolean(filters.search);
 
   return (
-    <div className="bg-white border border-gray-200 rounded-2xl p-5 sm:p-6 shadow-sm space-y-5">
+    <div className="bg-white border border-gray-200 p-6 sm:p-8 shadow-sm space-y-6">
       {/* Top Row: Search input + Results summary */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
         {/* Search Bar */}
         <div className="relative flex-1">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
           <input
             type="search"
             value={localSearch}
             onChange={(e) => setLocalSearch(e.target.value)}
             placeholder="Поиск по названию, организатору, городу..."
-            className="w-full pl-10 pr-10 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-[#111111] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#f8173f]/20 focus:border-[#f8173f] transition-all"
+            className="w-full pl-11 pr-10 py-3 bg-[#fbfbf9] border border-gray-300 focus:border-[#f8173f] text-sm text-[#111111] placeholder:text-gray-400 outline-none transition-colors"
           />
           {localSearch && (
             <button
@@ -106,7 +106,7 @@ export function EventFilters({
           <button
             type="button"
             onClick={onReset}
-            className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-[#f8173f] hover:bg-red-50 transition-colors whitespace-nowrap cursor-pointer"
+            className="inline-flex items-center justify-center gap-1.5 px-5 py-3 border border-[#f8173f] text-xs font-semibold uppercase tracking-wider text-[#f8173f] hover:bg-[#f8173f] hover:text-white transition-all whitespace-nowrap cursor-pointer"
           >
             <RotateCcw className="w-3.5 h-3.5" />
             <span>Сбросить фильтры</span>
@@ -115,27 +115,27 @@ export function EventFilters({
       </div>
 
       {/* Filter Options Row */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center pt-2 border-t border-gray-100">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center pt-4 border-t border-gray-100">
         {/* Format Selector (Online / Offline) */}
-        <div className="md:col-span-5 flex items-center gap-1.5 bg-gray-50 p-1 rounded-xl border border-gray-100">
+        <div className="lg:col-span-4 flex items-center gap-2">
           <button
             type="button"
             onClick={() => onChange({ ...filters, format: "all" })}
-            className={`flex-1 py-1.5 px-3 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
+            className={`flex-1 py-2 px-3 text-xs font-semibold uppercase tracking-wider border transition-all text-center cursor-pointer ${
               filters.format === "all"
-                ? "bg-white text-[#111111] shadow-sm"
-                : "text-gray-500 hover:text-gray-800"
+                ? "bg-[#111111] text-white border-[#111111]"
+                : "bg-white text-[#111111] border-gray-200 hover:border-gray-400"
             }`}
           >
-            Все форматы
+            Все
           </button>
           <button
             type="button"
             onClick={() => onChange({ ...filters, format: "online" })}
-            className={`flex-1 inline-flex items-center justify-center gap-1.5 py-1.5 px-3 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
+            className={`flex-1 inline-flex items-center justify-center gap-1 py-2 px-3 text-xs font-semibold uppercase tracking-wider border transition-all text-center cursor-pointer ${
               filters.format === "online"
-                ? "bg-emerald-500 text-white shadow-sm"
-                : "text-gray-500 hover:text-gray-800"
+                ? "bg-emerald-600 text-white border-emerald-600"
+                : "bg-white text-[#111111] border-gray-200 hover:border-gray-400"
             }`}
           >
             <Video className="w-3.5 h-3.5" />
@@ -144,10 +144,10 @@ export function EventFilters({
           <button
             type="button"
             onClick={() => onChange({ ...filters, format: "offline" })}
-            className={`flex-1 inline-flex items-center justify-center gap-1.5 py-1.5 px-3 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
+            className={`flex-1 inline-flex items-center justify-center gap-1 py-2 px-3 text-xs font-semibold uppercase tracking-wider border transition-all text-center cursor-pointer ${
               filters.format === "offline"
-                ? "bg-sky-600 text-white shadow-sm"
-                : "text-gray-500 hover:text-gray-800"
+                ? "bg-[#f8173f] text-white border-[#f8173f]"
+                : "bg-white text-[#111111] border-gray-200 hover:border-gray-400"
             }`}
           >
             <MapPin className="w-3.5 h-3.5" />
@@ -156,14 +156,14 @@ export function EventFilters({
         </div>
 
         {/* Price Selector (Free / Paid) */}
-        <div className="md:col-span-3 flex items-center gap-1.5 bg-gray-50 p-1 rounded-xl border border-gray-100">
+        <div className="lg:col-span-4 flex items-center gap-2">
           <button
             type="button"
             onClick={() => onChange({ ...filters, price: "all" })}
-            className={`flex-1 py-1.5 px-2.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
+            className={`flex-1 py-2 px-3 text-xs font-semibold uppercase tracking-wider border transition-all text-center cursor-pointer ${
               filters.price === "all"
-                ? "bg-white text-[#111111] shadow-sm"
-                : "text-gray-500 hover:text-gray-800"
+                ? "bg-[#111111] text-white border-[#111111]"
+                : "bg-white text-[#111111] border-gray-200 hover:border-gray-400"
             }`}
           >
             Все цены
@@ -171,10 +171,10 @@ export function EventFilters({
           <button
             type="button"
             onClick={() => onChange({ ...filters, price: "free" })}
-            className={`flex-1 py-1.5 px-2.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
+            className={`flex-1 py-2 px-3 text-xs font-semibold uppercase tracking-wider border transition-all text-center cursor-pointer ${
               filters.price === "free"
-                ? "bg-emerald-500 text-white shadow-sm"
-                : "text-gray-500 hover:text-gray-800"
+                ? "bg-emerald-600 text-white border-emerald-600"
+                : "bg-white text-[#111111] border-gray-200 hover:border-gray-400"
             }`}
           >
             Бесплатно
@@ -182,10 +182,10 @@ export function EventFilters({
           <button
             type="button"
             onClick={() => onChange({ ...filters, price: "paid" })}
-            className={`flex-1 py-1.5 px-2.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
+            className={`flex-1 py-2 px-3 text-xs font-semibold uppercase tracking-wider border transition-all text-center cursor-pointer ${
               filters.price === "paid"
-                ? "bg-[#1a2e35] text-white shadow-sm"
-                : "text-gray-500 hover:text-gray-800"
+                ? "bg-[#1a2e35] text-white border-[#1a2e35]"
+                : "bg-white text-[#111111] border-gray-200 hover:border-gray-400"
             }`}
           >
             Платно
@@ -193,13 +193,13 @@ export function EventFilters({
         </div>
 
         {/* Resident Organizer Dropdown */}
-        <div className="md:col-span-4 flex items-center gap-2">
+        <div className="lg:col-span-4">
           <select
             name="resident"
             aria-label="Резидент-организатор"
             value={filters.resident}
             onChange={(e) => onChange({ ...filters, resident: e.target.value })}
-            className="w-full py-2 px-3 bg-gray-50 border border-gray-200 rounded-xl text-xs font-medium text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#f8173f]/20 focus:border-[#f8173f] transition-all cursor-pointer"
+            className="w-full py-2.5 px-4 bg-white border border-gray-300 text-xs font-semibold uppercase tracking-wider text-[#111111] focus:border-[#f8173f] outline-none transition-colors cursor-pointer"
           >
             {RESIDENT_OPTIONS.map((opt) => (
               <option key={opt.value} value={opt.value}>
