@@ -5,32 +5,14 @@ export const DEFAULT_POSTER =
   <defs>
     <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1a2e35"/>
-      <stop offset="60%" stop-color="#0f1a1e"/>
-      <stop offset="100%" stop-color="#1a2e35"/>
+      <stop offset="100%" stop-color="#0f1a1e"/>
     </linearGradient>
   </defs>
   <rect width="800" height="500" fill="url(#g)"/>
-  <!-- Handle -->
-  <line x1="160" y1="340" x2="250" y2="270" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
-  <line x1="250" y1="270" x2="350" y2="230" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
-  <line x1="350" y1="230" x2="470" y2="245" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
-  <!-- Bowl -->
-  <line x1="470" y1="245" x2="640" y2="225" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
-  <line x1="640" y1="225" x2="590" y2="340" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
-  <line x1="590" y1="340" x2="430" y2="360" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
-  <line x1="430" y1="360" x2="470" y2="245" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
-  <!-- Ray to Polaris -->
-  <line x1="590" y1="340" x2="710" y2="80" stroke="#f8173f" stroke-width="1.8" stroke-dasharray="4,4" stroke-opacity="0.8"/>
-  <!-- Stars -->
-  <circle cx="160" cy="340" r="5" fill="#ffffff" />
-  <circle cx="250" cy="270" r="5" fill="#ffffff" />
-  <circle cx="350" cy="230" r="6" fill="#ffffff" />
-  <circle cx="470" cy="245" r="4.5" fill="#ffffff" />
-  <circle cx="430" cy="360" r="5" fill="#ffffff" />
-  <circle cx="590" cy="340" r="6" fill="#ffffff" />
-  <circle cx="640" cy="225" r="6" fill="#ffffff" />
-  <circle cx="710" cy="80" r="7" fill="#f8173f" />
-  <text x="50%" y="90%" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="22" font-weight="700" letter-spacing="3">БОЛЬШАЯ МЕДВЕДИЦА</text>
+  <rect x="30" y="30" width="740" height="440" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" rx="8"/>
+  <line x1="80" y1="250" x2="220" y2="250" stroke="#f8173f" stroke-width="3"/>
+  <text x="50%" y="225" text-anchor="middle" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="700" letter-spacing="4">БОЛЬШАЯ МЕДВЕДИЦА</text>
+  <text x="50%" y="280" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500" letter-spacing="2">АССОЦИАЦИЯ ИНВЕСТИЦИОННОГО РЫНКА</text>
 </svg>
 `);
 

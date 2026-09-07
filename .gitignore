@@ -40,4 +40,5 @@ next-env.d.ts
 # Deploy bundles
 deploy_beget/
 deploy_bundle/
+scratch/
 
