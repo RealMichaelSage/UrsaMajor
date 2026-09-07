@@ -1,0 +1,829 @@
+{
+  "timestamp": "2026-09-07T11:01:25.706Z",
+  "total": 157,
+  "passed": 157,
+  "failed": 0,
+  "successRate": "100.0%",
+  "results": [
+    {
+      "suite": "DOM Anchors",
+      "name": "Section #up (Hero Section) exists and is visible in DOM",
+      "passed": true,
+      "details": "Count: 1, Visible: true"
+    },
+    {
+      "suite": "DOM Anchors",
+      "name": "Section #partners (Resident Partners) exists and is visible in DOM",
+      "passed": true,
+      "details": "Count: 1, Visible: true"
+    },
+    {
+      "suite": "DOM Anchors",
+      "name": "Section #goals (Goals & Objectives) exists and is visible in DOM",
+      "passed": true,
+      "details": "Count: 1, Visible: true"
+    },
+    {
+      "suite": "DOM Anchors",
+      "name": "Section #benefit (Benefits of Participation) exists and is visible in DOM",
+      "passed": true,
+      "details": "Count: 1, Visible: true"
+    },
+    {
+      "suite": "DOM Anchors",
+      "name": "Section #product (Joint Products) exists and is visible in DOM",
+      "passed": true,
+      "details": "Count: 1, Visible: true"
+    },
+    {
+      "suite": "DOM Anchors",
+      "name": "Section #events (Events Showcase) exists and is visible in DOM",
+      "passed": true,
+      "details": "Count: 1, Visible: true"
+    },
+    {
+      "suite": "DOM Anchors",
+      "name": "Section #roadmap (Roadmap Timeline) exists and is visible in DOM",
+      "passed": true,
+      "details": "Count: 1, Visible: true"
+    },
+    {
+      "suite": "DOM Anchors",
+      "name": "Section #team (Board of Directors) exists and is visible in DOM",
+      "passed": true,
+      "details": "Count: 1, Visible: true"
+    },
+    {
+      "suite": "DOM Anchors",
+      "name": "Section #form (Contact Consultation Form) exists and is visible in DOM",
+      "passed": true,
+      "details": "Count: 1, Visible: true"
+    },
+    {
+      "suite": "DOM Anchors",
+      "name": "Header element (<header>) is present and visible",
+      "passed": true
+    },
+    {
+      "suite": "DOM Anchors",
+      "name": "Footer element (<footer>) is present and visible",
+      "passed": true
+    },
+    {
+      "suite": "DOM Anchors",
+      "name": "Anchor sections are structured in strictly monotonic vertical order",
+      "passed": true,
+      "details": "Positions: [0,879.609375,2937.734375,3944.859375,5094.734375,7113.359375,8018.734375,8947.109375,10526.734375]"
+    },
+    {
+      "suite": "Verbatim Copy",
+      "name": "Hero H1 contains verbatim headline",
+      "passed": true,
+      "details": "Received: \"Равный доступ к лучшим инвестиционным проектам и сделкам\""
+    },
+    {
+      "suite": "Verbatim Copy",
+      "name": "Hero subtitle contains verbatim copy",
+      "passed": true,
+      "details": "Received: \"Вместе создаем и поддерживаем общие стандарты инвестиционного рынка\""
+    },
+    {
+      "suite": "Verbatim Copy",
+      "name": "Hero eyebrow contains association name",
+      "passed": true
+    },
+    {
+      "suite": "Resident Partners",
+      "name": "Resident containing 'СОБА' is present in #partners",
+      "passed": true,
+      "details": "Found in section text"
+    },
+    {
+      "suite": "Resident Partners",
+      "name": "Resident containing 'Сибири' is present in #partners",
+      "passed": true,
+      "details": "Found in section text"
+    },
+    {
+      "suite": "Resident Partners",
+      "name": "Resident containing 'ARGENT' is present in #partners",
+      "passed": true,
+      "details": "Found in section text"
+    },
+    {
+      "suite": "Resident Partners",
+      "name": "Resident containing 'FINMUSTER' is present in #partners",
+      "passed": true,
+      "details": "Found in section text"
+    },
+    {
+      "suite": "Resident Partners",
+      "name": "Resident containing 'UNCRN' is present in #partners",
+      "passed": true,
+      "details": "Found in section text"
+    },
+    {
+      "suite": "Resident Partners",
+      "name": "Resident containing 'Центр Сообществ' is present in #partners",
+      "passed": true,
+      "details": "Found in section text"
+    },
+    {
+      "suite": "Resident Partners",
+      "name": "Resident containing 'Pitchleaks' is present in #partners",
+      "passed": true,
+      "details": "Found in section text"
+    },
+    {
+      "suite": "Resident Partners",
+      "name": "Resident containing 'ASB Consulting' is present in #partners",
+      "passed": true,
+      "details": "Found in section text"
+    },
+    {
+      "suite": "Resident Partners",
+      "name": "Resident containing 'ЛАVА' is present in #partners",
+      "passed": true,
+      "details": "Found in section text"
+    },
+    {
+      "suite": "Resident Partners",
+      "name": "Resident containing 'KPD' is present in #partners",
+      "passed": true,
+      "details": "Found in section text"
+    },
+    {
+      "suite": "Resident Partners",
+      "name": "Resident containing 'Finmuster' is present in #partners",
+      "passed": true,
+      "details": "Found in section text"
+    },
+    {
+      "suite": "Resident Partners",
+      "name": "Resident containing 'DocSourcing' is present in #partners",
+      "passed": true,
+      "details": "Found in section text"
+    },
+    {
+      "suite": "Resident Partners",
+      "name": "All 12 resident cards have logo images rendered (found 12)",
+      "passed": true,
+      "details": "Found 12 img tags in #partners"
+    },
+    {
+      "suite": "Goals & Pillars",
+      "name": "Pillar 'Рыночный объем и защита прав' exists in #goals",
+      "passed": true
+    },
+    {
+      "suite": "Goals & Pillars",
+      "name": "Pillar 'Компетенции и единая инфраструктура' exists in #goals",
+      "passed": true
+    },
+    {
+      "suite": "Goals & Pillars",
+      "name": "Pillar 'Экосистема и региональное развитие' exists in #goals",
+      "passed": true
+    },
+    {
+      "suite": "Goals & Pillars",
+      "name": "Goal containing 'Увеличение количества инвестиц...' present",
+      "passed": true
+    },
+    {
+      "suite": "Goals & Pillars",
+      "name": "Goal containing 'Стимулирование роста количеств...' present",
+      "passed": true
+    },
+    {
+      "suite": "Goals & Pillars",
+      "name": "Goal containing 'Защита интересов инвесторов...' present",
+      "passed": true
+    },
+    {
+      "suite": "Goals & Pillars",
+      "name": "Goal containing 'Повышение квалификации участни...' present",
+      "passed": true
+    },
+    {
+      "suite": "Goals & Pillars",
+      "name": "Goal containing 'Сформировать единую платформу ...' present",
+      "passed": true
+    },
+    {
+      "suite": "Goals & Pillars",
+      "name": "Goal containing 'Выработать единые стандарты эк...' present",
+      "passed": true
+    },
+    {
+      "suite": "Goals & Pillars",
+      "name": "Goal containing 'Сформировать регулярное взаимо...' present",
+      "passed": true
+    },
+    {
+      "suite": "Goals & Pillars",
+      "name": "Goal containing 'Выработать бизнес-модель для в...' present",
+      "passed": true
+    },
+    {
+      "suite": "Goals & Pillars",
+      "name": "Goal containing 'Сформировать систему квалифика...' present",
+      "passed": true
+    },
+    {
+      "suite": "Benefits",
+      "name": "Benefit containing 'Совместное влияние' present in #benefit",
+      "passed": true
+    },
+    {
+      "suite": "Benefits",
+      "name": "Benefit containing 'Инструмент обмена ресурсами' present in #benefit",
+      "passed": true
+    },
+    {
+      "suite": "Benefits",
+      "name": "Benefit containing 'НЕ ПРОТИВ, а ДЛЯ клубов' present in #benefit",
+      "passed": true
+    },
+    {
+      "suite": "Benefits",
+      "name": "Benefit containing 'Хранение данных и аналитика' present in #benefit",
+      "passed": true
+    },
+    {
+      "suite": "Benefits",
+      "name": "Benefit containing 'Статус участника' present in #benefit",
+      "passed": true
+    },
+    {
+      "suite": "Benefits",
+      "name": "Benefit containing 'Стандартизация практик и процессов' present in #benefit",
+      "passed": true
+    },
+    {
+      "suite": "Benefits",
+      "name": "Benefit containing 'Привлечение инвестиций' present in #benefit",
+      "passed": true
+    },
+    {
+      "suite": "Joint Products",
+      "name": "Product 'INVESTMENT CLUB SHOW' present in #product",
+      "passed": true
+    },
+    {
+      "suite": "Joint Products",
+      "name": "Product 'ВЕНЧУРНАЯ АКАДЕМИЯ' present in #product",
+      "passed": true
+    },
+    {
+      "suite": "Joint Products",
+      "name": "Product 'КОНСАЛТИНГОВАЯ ПОДДЕРЖКА ОТКРЫТИЯ КЛУБОВ ДЛЯ РЕГИОНОВ' present in #product",
+      "passed": true
+    },
+    {
+      "suite": "Joint Products",
+      "name": "Product 'СТАРТАП КАФЕ №1' present in #product",
+      "passed": true
+    },
+    {
+      "suite": "Joint Products",
+      "name": "Product 'ПЛАТФОРМА ДЛЯ КЛУБОВ' present in #product",
+      "passed": true
+    },
+    {
+      "suite": "Roadmap",
+      "name": "Roadmap stage 'Консолидация экосистемы' present in #roadmap",
+      "passed": true
+    },
+    {
+      "suite": "Roadmap",
+      "name": "Roadmap stage 'Единая стандартизация и скоринг' present in #roadmap",
+      "passed": true
+    },
+    {
+      "suite": "Roadmap",
+      "name": "Roadmap stage 'Региональное масштабирование' present in #roadmap",
+      "passed": true
+    },
+    {
+      "suite": "Roadmap",
+      "name": "Roadmap stage 'Международные мосты' present in #roadmap",
+      "passed": true
+    },
+    {
+      "suite": "Roadmap",
+      "name": "Roadmap stage 'Цифровая платформа синдикатов' present in #roadmap",
+      "passed": true
+    },
+    {
+      "suite": "Board & Team",
+      "name": "Board member 'Луиза Александрова' present in #team",
+      "passed": true
+    },
+    {
+      "suite": "Board & Team",
+      "name": "Board member 'Андрей Заворин' present in #team",
+      "passed": true
+    },
+    {
+      "suite": "Board & Team",
+      "name": "Board member 'Михаил Пузырёв' present in #team",
+      "passed": true
+    },
+    {
+      "suite": "Board & Team",
+      "name": "Board member 'Максим Никитинский' present in #team",
+      "passed": true
+    },
+    {
+      "suite": "Board & Team",
+      "name": "Board member 'Константин Разетдинов' present in #team",
+      "passed": true
+    },
+    {
+      "suite": "Board & Team",
+      "name": "Board member 'Мария Кузнецова' present in #team",
+      "passed": true
+    },
+    {
+      "suite": "Board & Team",
+      "name": "Board member 'Сергей Львов' present in #team",
+      "passed": true
+    },
+    {
+      "suite": "Board & Team",
+      "name": "Board member 'Сергей Урескул' present in #team",
+      "passed": true
+    },
+    {
+      "suite": "Board & Team",
+      "name": "Board member 'Максим Печеник' present in #team",
+      "passed": true
+    },
+    {
+      "suite": "Board & Team",
+      "name": "Board member 'Алексей Соколов' present in #team",
+      "passed": true
+    },
+    {
+      "suite": "Board & Team",
+      "name": "Board member 'Диана Гуц' present in #team",
+      "passed": true
+    },
+    {
+      "suite": "Board & Team",
+      "name": "Board member 'Полина Савилова' present in #team",
+      "passed": true
+    },
+    {
+      "suite": "Board & Team",
+      "name": "All 12 board members have portrait photos (found 12)",
+      "passed": true
+    },
+    {
+      "suite": "Events Showcase",
+      "name": "Showcase event date '7 февраля 2026' present in #events",
+      "passed": true
+    },
+    {
+      "suite": "Events Showcase",
+      "name": "Showcase location 'Таиланд' present in #events",
+      "passed": true
+    },
+    {
+      "suite": "Events Showcase",
+      "name": "Showcase event title present",
+      "passed": true
+    },
+    {
+      "suite": "Application Modal",
+      "name": "Modal opens on 'ПОДАТЬ ЗАЯВКУ' button click",
+      "passed": true
+    },
+    {
+      "suite": "Application Modal",
+      "name": "URL hash updates to #popup:myform when opened",
+      "passed": true
+    },
+    {
+      "suite": "Application Modal",
+      "name": "Field [name=\"name\"] is present",
+      "passed": true
+    },
+    {
+      "suite": "Application Modal",
+      "name": "Field [name=\"phone\"] is present",
+      "passed": true
+    },
+    {
+      "suite": "Application Modal",
+      "name": "Field [name=\"email\"] is present",
+      "passed": true
+    },
+    {
+      "suite": "Application Modal",
+      "name": "Field [name=\"telegram\"] is present",
+      "passed": true
+    },
+    {
+      "suite": "Application Modal",
+      "name": "Field [name=\"position\"] is present",
+      "passed": true
+    },
+    {
+      "suite": "Application Modal",
+      "name": "Field [name=\"company\"] is present",
+      "passed": true
+    },
+    {
+      "suite": "Application Modal",
+      "name": "Field [name=\"website\"] is present",
+      "passed": true
+    },
+    {
+      "suite": "Application Modal",
+      "name": "Field [name=\"recommendation\"] is present",
+      "passed": true
+    },
+    {
+      "suite": "Application Modal",
+      "name": "Field [name=\"request\"] is present",
+      "passed": true
+    },
+    {
+      "suite": "Application Modal",
+      "name": "Field [name=\"name\"] has required attribute",
+      "passed": true
+    },
+    {
+      "suite": "Application Modal",
+      "name": "Field [name=\"phone\"] has required attribute",
+      "passed": true
+    },
+    {
+      "suite": "Application Modal",
+      "name": "Field [name=\"email\"] has required attribute",
+      "passed": true
+    },
+    {
+      "suite": "Application Modal",
+      "name": "Field [name=\"telegram\"] has required attribute",
+      "passed": true
+    },
+    {
+      "suite": "Application Modal",
+      "name": "Field [name=\"position\"] has required attribute",
+      "passed": true
+    },
+    {
+      "suite": "Application Modal",
+      "name": "Field [name=\"company\"] has required attribute",
+      "passed": true
+    },
+    {
+      "suite": "Application Modal",
+      "name": "Empty submit is prevented by HTML5 validation (modal remains open)",
+      "passed": true
+    },
+    {
+      "suite": "Application Modal",
+      "name": "Valid submission displays confirmation screen",
+      "passed": true
+    },
+    {
+      "suite": "Application Modal",
+      "name": "Modal closes on 'Закрыть' button click",
+      "passed": true
+    },
+    {
+      "suite": "Application Modal",
+      "name": "Modal reopened for Escape test",
+      "passed": true
+    },
+    {
+      "suite": "Application Modal",
+      "name": "Modal closes on Escape key press",
+      "passed": true
+    },
+    {
+      "suite": "Event Modal",
+      "name": "Modal opens on 'РАЗМЕСТИТЬ МЕРОПРИЯТИЕ' click",
+      "passed": true
+    },
+    {
+      "suite": "Event Modal",
+      "name": "URL hash updates to #popup:event",
+      "passed": true
+    },
+    {
+      "suite": "Event Modal",
+      "name": "Field [name=\"title\"] is present",
+      "passed": true
+    },
+    {
+      "suite": "Event Modal",
+      "name": "Field [name=\"description\"] is present",
+      "passed": true
+    },
+    {
+      "suite": "Event Modal",
+      "name": "Field [name=\"eventDate\"] is present",
+      "passed": true
+    },
+    {
+      "suite": "Event Modal",
+      "name": "Field [name=\"geo\"] is present",
+      "passed": true
+    },
+    {
+      "suite": "Event Modal",
+      "name": "Field [name=\"website\"] is present",
+      "passed": true
+    },
+    {
+      "suite": "Event Modal",
+      "name": "Field [name=\"company\"] is present",
+      "passed": true
+    },
+    {
+      "suite": "Event Modal",
+      "name": "Field [name=\"name\"] is present",
+      "passed": true
+    },
+    {
+      "suite": "Event Modal",
+      "name": "Field [name=\"telegram\"] is present",
+      "passed": true
+    },
+    {
+      "suite": "Event Modal",
+      "name": "Field [name=\"phone\"] is present",
+      "passed": true
+    },
+    {
+      "suite": "Event Modal",
+      "name": "Field [name=\"email\"] is present",
+      "passed": true
+    },
+    {
+      "suite": "Event Modal",
+      "name": "Field [name=\"title\"] has required attribute",
+      "passed": true
+    },
+    {
+      "suite": "Event Modal",
+      "name": "Field [name=\"description\"] has required attribute",
+      "passed": true
+    },
+    {
+      "suite": "Event Modal",
+      "name": "Field [name=\"eventDate\"] has required attribute",
+      "passed": true
+    },
+    {
+      "suite": "Event Modal",
+      "name": "Field [name=\"geo\"] has required attribute",
+      "passed": true
+    },
+    {
+      "suite": "Event Modal",
+      "name": "Field [name=\"company\"] has required attribute",
+      "passed": true
+    },
+    {
+      "suite": "Event Modal",
+      "name": "Field [name=\"name\"] has required attribute",
+      "passed": true
+    },
+    {
+      "suite": "Event Modal",
+      "name": "Field [name=\"telegram\"] has required attribute",
+      "passed": true
+    },
+    {
+      "suite": "Event Modal",
+      "name": "Field [name=\"phone\"] has required attribute",
+      "passed": true
+    },
+    {
+      "suite": "Event Modal",
+      "name": "Field [name=\"email\"] has required attribute",
+      "passed": true
+    },
+    {
+      "suite": "Event Modal",
+      "name": "Event modal closes on X button click",
+      "passed": true
+    },
+    {
+      "suite": "Privacy Modal",
+      "name": "Privacy modal opens on footer button click",
+      "passed": true
+    },
+    {
+      "suite": "Privacy Modal",
+      "name": "Privacy modal text references Federal Law 152-FZ",
+      "passed": true
+    },
+    {
+      "suite": "Privacy Modal",
+      "name": "Privacy modal closes on 'Понятно' click",
+      "passed": true
+    },
+    {
+      "suite": "Hash Deep-linking",
+      "name": "Direct load with #popup:myform opens Application Modal immediately",
+      "passed": true
+    },
+    {
+      "suite": "Hash Deep-linking",
+      "name": "Direct load with #popup:event opens Event Modal immediately",
+      "passed": true
+    },
+    {
+      "suite": "Hash Deep-linking",
+      "name": "Direct load with #popup:privacy opens Privacy Modal immediately",
+      "passed": true
+    },
+    {
+      "suite": "Inline Form",
+      "name": "Contact form exists in #form section",
+      "passed": true
+    },
+    {
+      "suite": "Inline Form",
+      "name": "Field [name=\"name\"] exists",
+      "passed": true
+    },
+    {
+      "suite": "Inline Form",
+      "name": "Field [name=\"name\"] is required",
+      "passed": true
+    },
+    {
+      "suite": "Inline Form",
+      "name": "Field [name=\"phone\"] exists",
+      "passed": true
+    },
+    {
+      "suite": "Inline Form",
+      "name": "Field [name=\"phone\"] is required",
+      "passed": true
+    },
+    {
+      "suite": "Inline Form",
+      "name": "Field [name=\"email\"] exists",
+      "passed": true
+    },
+    {
+      "suite": "Inline Form",
+      "name": "Field [name=\"email\"] is required",
+      "passed": true
+    },
+    {
+      "suite": "Inline Form",
+      "name": "Field [name=\"telegram\"] exists",
+      "passed": true
+    },
+    {
+      "suite": "Inline Form",
+      "name": "Field [name=\"telegram\"] is required",
+      "passed": true
+    },
+    {
+      "suite": "Inline Form",
+      "name": "Field [name=\"request\"] exists",
+      "passed": true
+    },
+    {
+      "suite": "Inline Form",
+      "name": "Field [name=\"request\"] is required",
+      "passed": true
+    },
+    {
+      "suite": "Inline Form",
+      "name": "Submitting inline form renders success confirmation",
+      "passed": true
+    },
+    {
+      "suite": "Responsive",
+      "name": "HTML contains valid responsive meta viewport tag",
+      "passed": true,
+      "details": "Content: width=device-width, initial-scale=1"
+    },
+    {
+      "suite": "Responsive Overflow",
+      "name": "Zero horizontal overflow on Mobile Small (iPhone SE) (375x667)",
+      "passed": true,
+      "details": "docWidth: 375, winWidth: 375"
+    },
+    {
+      "suite": "Responsive Overflow",
+      "name": "Zero horizontal overflow on Mobile Modern (iPhone 14) (390x844)",
+      "passed": true,
+      "details": "docWidth: 390, winWidth: 390"
+    },
+    {
+      "suite": "Responsive Overflow",
+      "name": "Zero horizontal overflow on Mobile Large (iPhone 14 Pro Max) (428x926)",
+      "passed": true,
+      "details": "docWidth: 428, winWidth: 428"
+    },
+    {
+      "suite": "Responsive Overflow",
+      "name": "Zero horizontal overflow on Tablet Portrait (iPad) (768x1024)",
+      "passed": true,
+      "details": "docWidth: 768, winWidth: 768"
+    },
+    {
+      "suite": "Responsive Overflow",
+      "name": "Zero horizontal overflow on Tablet Landscape (1024x768)",
+      "passed": true,
+      "details": "docWidth: 1024, winWidth: 1024"
+    },
+    {
+      "suite": "Responsive Overflow",
+      "name": "Zero horizontal overflow on Desktop Standard (MacBook 13) (1280x800)",
+      "passed": true,
+      "details": "docWidth: 1280, winWidth: 1280"
+    },
+    {
+      "suite": "Responsive Overflow",
+      "name": "Zero horizontal overflow on Desktop Large (Full HD) (1920x1080)",
+      "passed": true,
+      "details": "docWidth: 1920, winWidth: 1920"
+    },
+    {
+      "suite": "Mobile Navigation",
+      "name": "Hamburger menu button is visible on mobile (375px)",
+      "passed": true
+    },
+    {
+      "suite": "Mobile Navigation",
+      "name": "Mobile drawer opens on burger button click",
+      "passed": true
+    },
+    {
+      "suite": "Mobile Navigation",
+      "name": "Drawer contains anchor link 'Цели'",
+      "passed": true
+    },
+    {
+      "suite": "Mobile Navigation",
+      "name": "Drawer contains anchor link 'Планы'",
+      "passed": true
+    },
+    {
+      "suite": "Mobile Navigation",
+      "name": "Drawer contains anchor link 'Совместные продукты'",
+      "passed": true
+    },
+    {
+      "suite": "Mobile Navigation",
+      "name": "Drawer contains anchor link 'Резиденты'",
+      "passed": true
+    },
+    {
+      "suite": "Mobile Navigation",
+      "name": "Drawer contains anchor link 'Преимущества'",
+      "passed": true
+    },
+    {
+      "suite": "Mobile Navigation",
+      "name": "Drawer contains anchor link 'Правление'",
+      "passed": true
+    },
+    {
+      "suite": "Mobile Navigation",
+      "name": "Drawer contains anchor link 'Мероприятия'",
+      "passed": true
+    },
+    {
+      "suite": "Mobile Navigation",
+      "name": "Drawer contains anchor link 'Новости'",
+      "passed": true
+    },
+    {
+      "suite": "Mobile Navigation",
+      "name": "Mobile drawer closes when toggled off",
+      "passed": true
+    },
+    {
+      "suite": "Responsive Grid",
+      "name": "Partners grid has responsive Tailwind columns: cols-1 (mobile) -> cols-2 (tablet) -> cols-3 (desktop)",
+      "passed": true,
+      "details": "Classes: grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+    },
+    {
+      "suite": "Responsive Grid",
+      "name": "Team grid adapts: cols-1 (mobile) -> cols-2 (sm) -> cols-3 (tablet) -> cols-4 (desktop)",
+      "passed": true,
+      "details": "Classes: grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8 mb-14 sm:mb-16"
+    },
+    {
+      "suite": "Accessibility & Touch",
+      "name": "Hero CTA button meets minimum touch target >= 44x44px (measured 240x54px)",
+      "passed": true
+    }
+  ]
+}
