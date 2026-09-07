@@ -84,3 +84,67 @@ export function buildTicketUrl(paymentUrl?: string | null, sourceUrl?: string): 
     return target;
   }
 }
+
+export const DEFAULT_EVENTS = [
+  {
+    id: "e1000000-0000-4000-8000-000000000001",
+    title: "Инвестиционный питч-день стартапов ранних стадий",
+    description:
+      "Презентация 8 перспективных технологических проектов перед бизнес-ангелами клуба СОБА. Оценка инвестиционной привлекательности и структурирование сделок.",
+    startAt: "2026-10-15T18:00:00+03:00",
+    endAt: "2026-10-15T21:00:00+03:00",
+    isOnline: false,
+    location: "Санкт-Петербург, ул. Римского-Корсакова, 5-7",
+    venueName: "Отель Амбассадор, зал Премьер",
+    priceType: "free" as const,
+    priceMin: 0,
+    priceCurrency: "RUB",
+    paymentUrl: "https://soba.spb.ru/pitch-day",
+    sourceUrl: "https://t.me/s/soba_invest/412",
+    category: "pitch" as const,
+    residentOrganizer: "СОБА",
+    status: "approved" as const,
+    isTop: true,
+  },
+  {
+    id: "e1000000-0000-4000-8000-000000000002",
+    title: "Онлайн-вебинар: Структурирование синдицированных венчурных сделок",
+    description:
+      "Практический разбор договоров конвертируемого займа и опционов в российском праве. Спикеры: ведущие юристы ASB Consulting Group.",
+    startAt: "2026-10-18T19:00:00+03:00",
+    endAt: "2026-10-18T20:30:00+03:00",
+    isOnline: true,
+    location: "Zoom Webinar",
+    venueName: "Online",
+    priceType: "paid" as const,
+    priceMin: 3500,
+    priceMax: 5000,
+    priceCurrency: "RUB",
+    paymentUrl: "https://asb-group.ru/events/webinar-syndication",
+    sourceUrl: "https://t.me/s/asb_consulting/198",
+    category: "webinar" as const,
+    residentOrganizer: "ASB Consulting Group",
+    status: "approved" as const,
+    isTop: true,
+  },
+  {
+    id: "e1000000-0000-4000-8000-000000000003",
+    title: "Демо-день акселератора Finmuster Pre-IPO Tech",
+    description:
+      "Выпускной поток технологических компаний с выручкой от 100 млн руб. Встреча с институциональными фондами и закрытыми клубами инвесторов.",
+    startAt: "2026-10-24T14:00:00+03:00",
+    endAt: "2026-10-24T19:00:00+03:00",
+    isOnline: false,
+    location: "Москва, Пресненская наб., 12",
+    venueName: "Башня Федерация Восток, 45 этаж",
+    priceType: "free" as const,
+    priceMin: 0,
+    priceCurrency: "RUB",
+    paymentUrl: "https://finmuster.ru/demo-day-2026",
+    sourceUrl: "https://finmuster.ru/events",
+    category: "demo_day" as const,
+    residentOrganizer: "Finmuster",
+    status: "approved" as const,
+    isTop: true,
+  },
+];

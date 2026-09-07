@@ -6,6 +6,7 @@ import { ArrowUpRight, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { EventCard } from "@/components/events/EventCard";
 import { EventModal } from "@/components/events/EventModal";
+import { DEFAULT_EVENTS } from "@/components/events/utils";
 import type { EventItem } from "@/shared/types";
 
 export interface EventsSectionProps {
@@ -13,8 +14,8 @@ export interface EventsSectionProps {
 }
 
 export function EventsSection({ onOpenEventModal }: EventsSectionProps) {
-  const [events, setEvents] = useState<EventItem[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [events, setEvents] = useState<EventItem[]>(DEFAULT_EVENTS as EventItem[]);
+  const [loading, setLoading] = useState<boolean>(false);
   const [selectedEvent, setSelectedEvent] = useState<EventItem | null>(null);
   const [isDetailModalOpen, setIsDetailModalOpen] = useState<boolean>(false);
 
@@ -26,12 +27,12 @@ export function EventsSection({ onOpenEventModal }: EventsSectionProps) {
         const res = await fetch("/api/events?limit=3");
         if (res.ok) {
           const data = await res.json();
-          if (isMounted && data.success && Array.isArray(data.events)) {
+          if (isMounted && data.success && Array.isArray(data.events) && data.events.length > 0) {
             setEvents(data.events);
           }
         }
       } catch (err) {
-        console.error("[EventsSection] Error fetching events:", err);
+        console.warn("[EventsSection] Live API unreachable, using default curated events:", err);
       } finally {
         if (isMounted) {
           setLoading(false);
