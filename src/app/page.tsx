@@ -32,6 +32,20 @@ export default function LandingPage() {
         setIsEventModalOpen(true);
       } else if (hash === "#popup:privacy" || hash === "#privacy") {
         setIsPrivacyModalOpen(true);
+      } else if (hash && !hash.startsWith("#popup:")) {
+        const targetId = hash.replace("#", "");
+        const elem = document.getElementById(targetId);
+        if (elem) {
+          setTimeout(() => {
+            const headerOffset = 80;
+            const elementPosition = elem.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth",
+            });
+          }, 150);
+        }
       }
     };
 

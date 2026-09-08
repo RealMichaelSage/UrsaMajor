@@ -50,7 +50,7 @@ export function NewsShowcase({ initialArticles }: NewsShowcaseProps) {
   }, []);
 
   return (
-    <section id="news" className="py-20 sm:py-28 bg-[#fbfbf9] border-t border-gray-100 overflow-hidden">
+    <section id="news" className="scroll-mt-20 sm:scroll-mt-24 py-20 sm:py-28 bg-[#fbfbf9] border-t border-gray-100 overflow-hidden">
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">

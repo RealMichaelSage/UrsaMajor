@@ -16,23 +16,23 @@ export function Footer({ onOpenPrivacy }: FooterProps) {
 
   return (
     <footer className="bg-white border-t border-gray-200 py-12 sm:py-16 text-sm text-gray-600 relative">
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8">
           {/* Logo & Legal Name */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-4 flex-shrink-0">
             <UrsaEmblem className="w-10 h-10 text-[#010207] flex-shrink-0" />
-            <div>
+            <div className="whitespace-nowrap">
               <span className="font-bold text-base text-[#111111] uppercase tracking-tight block">
                 АПУВИР &quot;Большая Медведица&quot;
               </span>
-              <span className="text-xs text-gray-500 font-light">
-                © АПУВИР &quot;Большая Медведица&quot; . 2026 Все права защищены.
+              <span className="text-xs text-gray-500 font-light block">
+                ©&nbsp;АПУВИР &quot;Большая Медведица&quot;,&nbsp;2026. Все&nbsp;права защищены.
               </span>
             </div>
           </div>
 
           {/* Statutory Links */}
-          <div className="flex flex-wrap items-center justify-center gap-6 text-xs sm:text-sm font-medium">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm font-medium whitespace-nowrap">
             <a
               href="https://drive.google.com/file/d/1QqHZN90cuaKc0H1mI4oNdoMdV_8QGsdx/view"
               target="_blank"
@@ -63,17 +63,10 @@ export function Footer({ onOpenPrivacy }: FooterProps) {
             >
               Новости рынка
             </Link>
-
-            <Link
-              href="/admin"
-              className="text-gray-400 hover:text-[#f8173f] transition-colors"
-            >
-              Панель управления
-            </Link>
           </div>
 
           {/* Designer Credit */}
-          <div className="text-xs text-gray-500 flex items-center space-x-1">
+          <div className="text-xs text-gray-500 flex items-center space-x-1 flex-shrink-0 whitespace-nowrap">
             <span>Designed by</span>
             <a
               href="https://michaelsage.ru"

@@ -8,7 +8,7 @@ import { getAssetUrl } from "@/shared/lib/assets";
 
 export function Partners() {
   return (
-    <section id="partners" className="py-20 sm:py-28 bg-[#fbfbf9] border-t border-gray-100">
+    <section id="partners" className="scroll-mt-20 sm:scroll-mt-24 py-20 sm:py-28 bg-[#fbfbf9] border-t border-gray-100">
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-14 sm:mb-16">

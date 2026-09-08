@@ -14,6 +14,21 @@ export function Header({ onOpenApplicationModal }: HeaderProps = {}) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const dropdownRef = React.useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setDropdownOpen(false);
+      }
+    };
+    if (dropdownOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownOpen]);
 
   const handleOpenAppModal = () => {
     if (onOpenApplicationModal) {
@@ -40,6 +55,57 @@ export function Header({ onOpenApplicationModal }: HeaderProps = {}) {
     }
   }, [mobileMenuOpen]);
 
+  const handleAnchorNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    const hashIndex = href.indexOf("#");
+    if (hashIndex === -1) return;
+    const targetId = href.substring(hashIndex + 1);
+
+    setDropdownOpen(false);
+    setMobileMenuOpen(false);
+
+    const currentPath = typeof window !== "undefined" ? window.location.pathname.replace(/\/$/, "") : "";
+    const isHome =
+      currentPath === "" ||
+      currentPath === "/ursa" ||
+      currentPath === "/ursa/index.html" ||
+      currentPath === "/";
+
+    if (isHome) {
+      e.preventDefault();
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        const headerOffset = 80;
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+        window.history.pushState(null, "", `${window.location.pathname}#${targetId}`);
+      }
+    } else {
+      e.preventDefault();
+      window.location.href = `/ursa/#${targetId}`;
+    }
+  };
+
+  const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const currentPath = typeof window !== "undefined" ? window.location.pathname.replace(/\/$/, "") : "";
+    const isHome =
+      currentPath === "" ||
+      currentPath === "/ursa" ||
+      currentPath === "/ursa/index.html" ||
+      currentPath === "/";
+
+    if (isHome) {
+      e.preventDefault();
+      setDropdownOpen(false);
+      setMobileMenuOpen(false);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.history.pushState(null, "", window.location.pathname);
+    }
+  };
+
   const aboutSubmenu = [
     { title: "Цели", href: "/#goals" },
     { title: "Планы", href: "/#roadmap" },
@@ -57,7 +123,7 @@ export function Header({ onOpenApplicationModal }: HeaderProps = {}) {
     >
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo & Emblem */}
-        <Link href="/" className="flex items-center space-x-3 group">
+        <Link href="/" onClick={handleHomeClick} className="flex items-center space-x-3 group">
           <UrsaEmblem className="w-8 h-8 sm:w-10 sm:h-10 text-[#010207] group-hover:text-[#f8173f] transition-colors flex-shrink-0" />
           <div className="flex flex-col">
             <span className="text-xs tracking-[0.2em] font-medium text-gray-500 uppercase">
@@ -73,19 +139,21 @@ export function Header({ onOpenApplicationModal }: HeaderProps = {}) {
         <nav className="hidden lg:flex items-center space-x-7 text-sm font-medium text-[#111111]">
           <Link
             href="/"
+            onClick={handleHomeClick}
             className="py-2 hover:text-[#f8173f] transition-colors"
           >
             Главная
           </Link>
           {/* Dropdown "О нас" */}
           <div
+            ref={dropdownRef}
             className="relative"
             onMouseEnter={() => setDropdownOpen(true)}
             onMouseLeave={() => setDropdownOpen(false)}
           >
             <button
               type="button"
-              onClick={() => setDropdownOpen((prev) => !prev)}
+              onClick={() => setDropdownOpen(true)}
               aria-haspopup="true"
               aria-expanded={dropdownOpen}
               onKeyDown={(e) => {
@@ -111,8 +179,8 @@ export function Header({ onOpenApplicationModal }: HeaderProps = {}) {
                   <Link
                     key={item.href}
                     href={item.href}
-                    onClick={() => setDropdownOpen(false)}
-                    className="block px-4 py-2 text-sm text-[#333333] hover:bg-[#fbfbf9] hover:text-[#f8173f] transition-colors"
+                    onClick={(e) => handleAnchorNavigation(e, item.href)}
+                    className="block px-4 py-2 text-sm text-[#333333] hover:bg-[#fbfbf9] hover:text-[#f8173f] transition-colors cursor-pointer"
                   >
                     {item.title}
                   </Link>
@@ -177,7 +245,7 @@ export function Header({ onOpenApplicationModal }: HeaderProps = {}) {
           <div className="flex flex-col space-y-4 pb-8">
             <Link
               href="/"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={handleHomeClick}
               className="text-lg font-bold text-[#111111] hover:text-[#f8173f] pb-2 border-b border-gray-100"
             >
               Главная
@@ -189,8 +257,8 @@ export function Header({ onOpenApplicationModal }: HeaderProps = {}) {
               <Link
                 key={item.href}
                 href={item.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-lg font-medium text-[#111111] hover:text-[#f8173f] transition-colors pl-2 py-1 border-l-2 border-transparent hover:border-[#f8173f]"
+                onClick={(e) => handleAnchorNavigation(e, item.href)}
+                className="text-lg font-medium text-[#111111] hover:text-[#f8173f] transition-colors pl-2 py-1 border-l-2 border-transparent hover:border-[#f8173f] cursor-pointer"
               >
                 {item.title}
               </Link>

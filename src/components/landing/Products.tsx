@@ -12,7 +12,7 @@ export interface ProductsProps {
 
 export function Products({ onOpenApplicationModal }: ProductsProps) {
   return (
-    <section id="product" className="py-20 sm:py-28 bg-white border-t border-gray-100">
+    <section id="product" className="scroll-mt-20 sm:scroll-mt-24 py-20 sm:py-28 bg-white border-t border-gray-100">
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-14 sm:mb-16">

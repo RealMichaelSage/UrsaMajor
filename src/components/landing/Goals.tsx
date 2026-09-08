@@ -5,7 +5,7 @@ import { GOALS_DATA } from "./data";
 
 export function Goals() {
   return (
-    <section id="goals" className="py-20 sm:py-28 bg-white border-t border-gray-100">
+    <section id="goals" className="scroll-mt-20 sm:scroll-mt-24 py-20 sm:py-28 bg-white border-t border-gray-100">
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-14 sm:mb-16">

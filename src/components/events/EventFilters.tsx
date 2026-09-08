@@ -74,7 +74,7 @@ export function EventFilters({
     Boolean(filters.search);
 
   return (
-    <div className="bg-white border border-gray-200 p-6 sm:p-8 shadow-sm space-y-6">
+    <div className="bg-white border border-gray-200 p-4 sm:p-6 shadow-sm space-y-4">
       {/* Top Row: Search input + Results summary */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
         {/* Search Bar */}

@@ -37,6 +37,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1, h2, h3, h4, h5, h6, .title, .heading, .section-title {
+  text-wrap: balance;
+}
+
+p, li, .desc, .text {
+  text-wrap: pretty;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

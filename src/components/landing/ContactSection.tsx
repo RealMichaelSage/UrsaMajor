@@ -47,7 +47,7 @@ export function ContactSection({ onOpenPrivacy }: ContactSectionProps) {
   };
 
   return (
-    <section id="form" className="py-20 sm:py-28 bg-white border-t border-gray-100">
+    <section id="form" className="scroll-mt-20 sm:scroll-mt-24 py-20 sm:py-28 bg-white border-t border-gray-100">
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column: Heading & Information */}

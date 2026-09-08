@@ -133,7 +133,7 @@ export default function NewsFeedPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-[#111111] overflow-x-hidden selection:bg-[#f8173f] selection:text-white">
+    <div className="min-h-screen flex flex-col bg-white text-[#111111] overflow-x-clip selection:bg-[#f8173f] selection:text-white">
       {/* Top Header */}
       <Header onOpenApplicationModal={() => setIsAppModalOpen(true)} />
 
@@ -166,61 +166,63 @@ export default function NewsFeedPage() {
           </div>
         </div>
 
-        {/* Toolbar: Search and Filter Pills */}
-        <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
-          <div className="space-y-6">
-            {/* Search Input Bar */}
-            <div className="relative max-w-xl">
-              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400">
-                <Search className="w-5 h-5" />
-              </div>
-              <input
-                type="search"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Поиск по новостям, аналитике и авторам..."
-                className="w-full pl-11 pr-10 py-3 bg-white border border-gray-200 text-sm text-[#111111] placeholder:text-gray-400 focus:outline-none focus:border-[#f8173f] focus:ring-1 focus:ring-[#f8173f] transition-all shadow-sm"
-              />
-              {searchQuery && (
-                <button
-                  type="button"
-                  onClick={() => setSearchQuery("")}
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
-                  aria-label="Очистить поиск"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              )}
-            </div>
-
-            {/* Category Tag Pills */}
-            <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-              <span className="hidden sm:inline-flex items-center gap-1 text-xs font-semibold text-gray-400 uppercase tracking-wider mr-1">
-                <SlidersHorizontal className="w-3.5 h-3.5" />
-                <span>Тематика:</span>
-              </span>
-              {CATEGORY_PILLS.map((pill) => {
-                const isActive = activeCategory === pill.id;
-                return (
+        {/* Sticky Toolbar: Search and Filter Pills */}
+        <div className="sticky top-[64px] sm:top-[72px] z-30 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-xs">
+          <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 py-4 space-y-3">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+              {/* Search Input Bar */}
+              <div className="relative w-full lg:max-w-md">
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+                  <Search className="w-4 h-4" />
+                </div>
+                <input
+                  type="search"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Поиск по новостям, аналитике и авторам..."
+                  className="w-full pl-10 pr-9 py-2.5 bg-[#fbfbf9] border border-gray-200 text-xs sm:text-sm text-[#111111] placeholder:text-gray-400 focus:outline-none focus:border-[#f8173f] focus:ring-1 focus:ring-[#f8173f] transition-all shadow-2xs"
+                />
+                {searchQuery && (
                   <button
-                    key={pill.id}
                     type="button"
-                    onClick={() => setActiveCategory(pill.id)}
-                    className={`inline-flex items-center px-4 py-2 text-xs sm:text-sm font-medium tracking-wide whitespace-nowrap transition-all duration-200 cursor-pointer ${
-                      isActive
-                        ? "bg-[#f8173f] text-white shadow-sm font-semibold"
-                        : "bg-[#fbfbf9] text-[#1a2e35] border border-gray-200 hover:border-gray-300 hover:bg-gray-100"
-                    }`}
+                    onClick={() => setSearchQuery("")}
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 cursor-pointer"
+                    aria-label="Очистить поиск"
                   >
-                    {pill.label}
+                    <X className="w-4 h-4" />
                   </button>
-                );
-              })}
+                )}
+              </div>
+
+              {/* Category Tag Pills */}
+              <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none flex-nowrap">
+                <span className="hidden xl:inline-flex items-center gap-1 text-xs font-semibold text-gray-400 uppercase tracking-wider mr-1 flex-shrink-0">
+                  <SlidersHorizontal className="w-3.5 h-3.5" />
+                  <span>Тематика:</span>
+                </span>
+                {CATEGORY_PILLS.map((pill) => {
+                  const isActive = activeCategory === pill.id;
+                  return (
+                    <button
+                      key={pill.id}
+                      type="button"
+                      onClick={() => setActiveCategory(pill.id)}
+                      className={`inline-flex items-center px-3 py-1.5 text-xs font-medium tracking-wide whitespace-nowrap transition-all duration-150 cursor-pointer flex-shrink-0 ${
+                        isActive
+                          ? "bg-[#f8173f] text-white shadow-xs font-semibold"
+                          : "bg-[#fbfbf9] text-[#1a2e35] border border-gray-200 hover:border-gray-300 hover:bg-gray-100"
+                      }`}
+                    >
+                      {pill.label}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
 
             {/* Results count & active search indication */}
             {(searchQuery || activeCategory !== "all") && (
-              <div className="flex items-center justify-between text-xs text-gray-500 pt-2">
+              <div className="flex items-center justify-between text-xs text-gray-500 pt-2 border-t border-gray-100">
                 <span>
                   Найдено материалов: <strong className="text-gray-900">{filteredArticles.length}</strong>
                   {searchQuery && (
@@ -237,18 +239,18 @@ export default function NewsFeedPage() {
               </div>
             )}
           </div>
+        </div>
 
-          {/* Main Grid */}
-          <div className="mt-8 sm:mt-10">
-            <NewsGrid
-              articles={paginatedArticles}
-              isLoading={isLoading}
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={setCurrentPage}
-              onResetFilters={handleResetFilters}
-            />
-          </div>
+        {/* News Grid Container */}
+        <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+          <NewsGrid
+            articles={paginatedArticles}
+            isLoading={isLoading}
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+            onResetFilters={handleResetFilters}
+          />
         </div>
       </main>
 

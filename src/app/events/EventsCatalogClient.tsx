@@ -263,13 +263,15 @@ export default function EventsCatalogClient() {
           </div>
         </div>
 
-        {/* Multi-Criteria Filters Bar */}
-        <EventFilters
-          filters={filters}
-          onChange={handleFilterChange}
-          onReset={handleResetFilters}
-          totalFound={totalCount}
-        />
+        {/* Multi-Criteria Filters Bar (Sticky) */}
+        <div className="sticky top-[64px] sm:top-[72px] z-30 bg-[#fbfbf9]/95 backdrop-blur-md py-2 -my-2">
+          <EventFilters
+            filters={filters}
+            onChange={handleFilterChange}
+            onReset={handleResetFilters}
+            totalFound={totalCount}
+          />
+        </div>
 
         {/* Results Counter */}
         <div className="flex items-center justify-between text-xs text-gray-500 font-medium px-1">
