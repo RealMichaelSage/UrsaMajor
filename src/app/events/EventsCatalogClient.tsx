@@ -181,7 +181,8 @@ export default function EventsCatalogClient() {
     }
 
     const queryString = params.toString();
-    const newUrl = queryString ? `/events?${queryString}` : "/events";
+    const currentPath = typeof window !== "undefined" ? window.location.pathname : "/events";
+    const newUrl = queryString ? `${currentPath}?${queryString}` : currentPath;
     window.history.replaceState(null, "", newUrl);
   };
 
@@ -195,9 +196,10 @@ export default function EventsCatalogClient() {
     };
     setFilters(resetState);
     setPage(1);
+    fetchEvents(resetState, 1);
 
-    // If modal is open, keep event ID; otherwise clean URL to /events
-    const newUrl = selectedEvent ? `/events?event=${selectedEvent.id}` : "/events";
+    const currentPath = typeof window !== "undefined" ? window.location.pathname : "/events";
+    const newUrl = selectedEvent ? `${currentPath}?event=${selectedEvent.id}` : currentPath;
     window.history.replaceState(null, "", newUrl);
   };
 
@@ -208,7 +210,8 @@ export default function EventsCatalogClient() {
 
     const params = new URLSearchParams(window.location.search);
     params.set("event", event.id);
-    window.history.replaceState(null, "", `/events?${params.toString()}`);
+    const currentPath = typeof window !== "undefined" ? window.location.pathname : "/events";
+    window.history.replaceState(null, "", `${currentPath}?${params.toString()}`);
   };
 
   // Close detail modal and remove ?event=[id]
@@ -219,7 +222,8 @@ export default function EventsCatalogClient() {
     const params = new URLSearchParams(window.location.search);
     params.delete("event");
     const queryString = params.toString();
-    const newUrl = queryString ? `/events?${queryString}` : "/events";
+    const currentPath = typeof window !== "undefined" ? window.location.pathname : "/events";
+    const newUrl = queryString ? `${currentPath}?${queryString}` : currentPath;
     window.history.replaceState(null, "", newUrl);
   };
 
@@ -263,8 +267,8 @@ export default function EventsCatalogClient() {
           </div>
         </div>
 
-        {/* Multi-Criteria Filters Bar (Sticky) */}
-        <div className="sticky top-[64px] sm:top-[72px] z-30 bg-[#fbfbf9]/95 backdrop-blur-md py-2 -my-2">
+        {/* Multi-Criteria Filters Bar (Sticky on desktop, natural flow on mobile) */}
+        <div className="sm:sticky sm:top-[72px] z-30 sm:bg-[#fbfbf9]/95 sm:backdrop-blur-md py-2 -my-2">
           <EventFilters
             filters={filters}
             onChange={handleFilterChange}

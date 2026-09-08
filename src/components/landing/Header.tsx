@@ -116,13 +116,18 @@ export function Header({ onOpenApplicationModal }: HeaderProps = {}) {
   ];
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-200 bg-white/95 backdrop-blur-md ${
-        scrolled ? "shadow-sm border-b border-gray-200 py-3" : "py-4 sm:py-5 border-b border-gray-100"
-      }`}
-    >
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Logo & Emblem */}
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+          mobileMenuOpen
+            ? "bg-white border-b border-gray-200"
+            : scrolled
+            ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-200"
+            : "bg-white/95 backdrop-blur-md border-b border-gray-100"
+        } h-16 sm:h-20 flex items-center`}
+      >
+      <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        {/* Logo &&nbsp;Emblem */}
         <Link href="/" onClick={handleHomeClick} className="flex items-center space-x-3 group">
           <UrsaEmblem className="w-8 h-8 sm:w-10 sm:h-10 text-[#010207] group-hover:text-[#f8173f] transition-colors flex-shrink-0" />
           <div className="flex flex-col">
@@ -165,7 +170,7 @@ export function Header({ onOpenApplicationModal }: HeaderProps = {}) {
               }}
               className="flex items-center space-x-1 py-2 hover:text-[#f8173f] transition-colors focus:outline-none cursor-pointer"
             >
-              <span>О нас</span>
+              <span>О&nbsp;нас</span>
               <ChevronDown
                 className={`w-4 h-4 transition-transform duration-200 ${
                   dropdownOpen ? "rotate-180 text-[#f8173f]" : "text-gray-400"
@@ -212,23 +217,25 @@ export function Header({ onOpenApplicationModal }: HeaderProps = {}) {
           </button>
         </nav>
 
-        {/* Action Button & Burger Toggle */}
+        {/* Action Button &&nbsp;Burger Toggle */}
         <div className="flex items-center space-x-3 sm:space-x-4">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={handleOpenAppModal}
-            className="hidden sm:inline-flex"
-          >
-            Написать нам
-          </Button>
+          <div className="hidden sm:block">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleOpenAppModal}
+            >
+              Написать нам
+            </Button>
+          </div>
 
           {/* Mobile Menu Button */}
           <button
             type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-gray-700 hover:text-[#111111] hover:bg-gray-100 rounded focus:outline-none cursor-pointer"
+            onClick={() => setMobileMenuOpen((prev) => !prev)}
+            className="lg:hidden p-2.5 text-gray-700 hover:text-[#111111] hover:bg-gray-100 rounded focus:outline-none cursor-pointer flex items-center justify-center min-w-[44px] min-h-[44px]"
             aria-label="Меню"
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? (
               <X className="w-6 h-6 text-[#111111]" />
@@ -238,75 +245,82 @@ export function Header({ onOpenApplicationModal }: HeaderProps = {}) {
           </button>
         </div>
       </div>
+    </header>
 
-      {/* Mobile Menu Drawer */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 top-[60px] z-50 bg-white flex flex-col p-6 overflow-y-auto lg:hidden animate-fade-in border-t border-gray-200">
-          <div className="flex flex-col space-y-4 pb-8">
-            <Link
-              href="/"
-              onClick={handleHomeClick}
-              className="text-lg font-bold text-[#111111] hover:text-[#f8173f] pb-2 border-b border-gray-100"
-            >
-              Главная
-            </Link>
-            <div className="text-xs uppercase tracking-widest text-gray-400 font-semibold mb-1">
-              О нас
-            </div>
-            {aboutSubmenu.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={(e) => handleAnchorNavigation(e, item.href)}
-                className="text-lg font-medium text-[#111111] hover:text-[#f8173f] transition-colors pl-2 py-1 border-l-2 border-transparent hover:border-[#f8173f] cursor-pointer"
-              >
-                {item.title}
-              </Link>
-            ))}
-
-            <div className="pt-4 border-t border-gray-100 space-y-4">
-              <Link
-                href="/events"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-lg font-medium text-[#111111] hover:text-[#f8173f]"
-              >
-                Мероприятия
-              </Link>
-              <Link
-                href="/news"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-lg font-medium text-[#111111] hover:text-[#f8173f]"
-              >
-                Новости
-              </Link>
-              <button
-                type="button"
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  handleOpenAppModal();
-                }}
-                className="block text-left text-lg font-medium text-[#111111] hover:text-[#f8173f] cursor-pointer"
-              >
-                Вступление
-              </button>
-            </div>
+    {/* Mobile Menu Drawer (Sibling to Header to avoid backdrop-filter stacking context containment) */}
+    {mobileMenuOpen && (
+      <div
+        className="fixed inset-x-0 top-16 bottom-0 z-40 bg-white flex flex-col p-6 overflow-y-auto lg:hidden animate-fade-in"
+        style={{ height: "calc(100dvh - 64px)" }}
+      >
+        <div className="flex flex-col space-y-4 pb-8 flex-1">
+          <Link
+            href="/"
+            onClick={handleHomeClick}
+            className="text-lg font-bold text-[#111111] hover:text-[#f8173f] pb-2 border-b border-gray-100"
+          >
+            Главная
+          </Link>
+          <div className="text-xs uppercase tracking-widest text-gray-400 font-semibold mb-1">
+            О&nbsp;нас
           </div>
+          {aboutSubmenu.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={(e) => handleAnchorNavigation(e, item.href)}
+              className="text-lg font-medium text-[#111111] hover:text-[#f8173f] transition-colors pl-2 py-1 border-l-2 border-transparent hover:border-[#f8173f] cursor-pointer"
+            >
+              {item.title}
+            </Link>
+          ))}
 
-          <div className="mt-auto pt-6 border-t border-gray-200">
-            <Button
-              variant="primary"
-              size="lg"
-              fullWidth
+          <div className="pt-4 border-t border-gray-100 space-y-4">
+            <Link
+              href="/events"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block text-lg font-medium text-[#111111] hover:text-[#f8173f]"
+            >
+              Мероприятия
+            </Link>
+            <Link
+              href="/news"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block text-lg font-medium text-[#111111] hover:text-[#f8173f]"
+            >
+              Новости
+            </Link>
+            <button
+              type="button"
               onClick={() => {
                 setMobileMenuOpen(false);
                 handleOpenAppModal();
               }}
+              className="block text-left text-lg font-medium text-[#111111] hover:text-[#f8173f] cursor-pointer"
             >
-              Написать нам
-            </Button>
+              Вступление
+            </button>
           </div>
         </div>
-      )}
-    </header>
-  );
+
+        <div className="mt-auto pt-6 border-t border-gray-200 space-y-3">
+          <Button
+            variant="primary"
+            size="lg"
+            fullWidth
+            onClick={() => {
+              setMobileMenuOpen(false);
+              handleOpenAppModal();
+            }}
+          >
+            Написать нам
+          </Button>
+          <div className="text-center text-xs text-gray-400">
+            ©&nbsp;АПУВИР «Большая Медведица»,&nbsp;2026
+          </div>
+        </div>
+      </div>
+    )}
+  </>
+);
 }

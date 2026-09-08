@@ -76,7 +76,7 @@ export function EventFilters({
   return (
     <div className="bg-white border border-gray-200 p-4 sm:p-6 shadow-sm space-y-4">
       {/* Top Row: Search input + Results summary */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4">
         {/* Search Bar */}
         <div className="relative flex-1">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -85,7 +85,7 @@ export function EventFilters({
             value={localSearch}
             onChange={(e) => setLocalSearch(e.target.value)}
             placeholder="Поиск по названию, организатору, городу..."
-            className="w-full pl-11 pr-10 py-3 bg-[#fbfbf9] border border-gray-300 focus:border-[#f8173f] text-sm text-[#111111] placeholder:text-gray-400 outline-none transition-colors"
+            className="w-full min-h-[44px] pl-11 pr-10 py-2.5 bg-[#fbfbf9] border border-gray-300 focus:border-[#f8173f] text-sm text-[#111111] placeholder:text-gray-400 outline-none transition-colors"
           />
           {localSearch && (
             <button
@@ -94,7 +94,8 @@ export function EventFilters({
                 setLocalSearch("");
                 onChange({ ...filters, search: "" });
               }}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 p-1 cursor-pointer"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 p-1.5 cursor-pointer"
+              aria-label="Очистить поиск"
             >
               <X className="w-4 h-4" />
             </button>
@@ -106,7 +107,7 @@ export function EventFilters({
           <button
             type="button"
             onClick={onReset}
-            className="inline-flex items-center justify-center gap-1.5 px-5 py-3 border border-[#f8173f] text-xs font-semibold uppercase tracking-wider text-[#f8173f] hover:bg-[#f8173f] hover:text-white transition-all whitespace-nowrap cursor-pointer"
+            className="inline-flex items-center justify-center gap-1.5 min-h-[44px] px-4 py-2.5 border border-[#f8173f] text-xs font-semibold uppercase tracking-wider text-[#f8173f] hover:bg-[#f8173f] hover:text-white active:bg-[#dc1235] transition-all whitespace-nowrap cursor-pointer"
           >
             <RotateCcw className="w-3.5 h-3.5" />
             <span>Сбросить фильтры</span>
@@ -115,91 +116,104 @@ export function EventFilters({
       </div>
 
       {/* Filter Options Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center pt-4 border-t border-gray-100">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-end pt-4 border-t border-gray-100">
         {/* Format Selector (Online / Offline) */}
-        <div className="lg:col-span-4 flex items-center gap-2">
-          <button
-            type="button"
-            onClick={() => onChange({ ...filters, format: "all" })}
-            className={`flex-1 py-2 px-3 text-xs font-semibold uppercase tracking-wider border transition-all text-center cursor-pointer ${
-              filters.format === "all"
-                ? "bg-[#111111] text-white border-[#111111]"
-                : "bg-white text-[#111111] border-gray-200 hover:border-gray-400"
-            }`}
-          >
-            Все
-          </button>
-          <button
-            type="button"
-            onClick={() => onChange({ ...filters, format: "online" })}
-            className={`flex-1 inline-flex items-center justify-center gap-1 py-2 px-3 text-xs font-semibold uppercase tracking-wider border transition-all text-center cursor-pointer ${
-              filters.format === "online"
-                ? "bg-emerald-600 text-white border-emerald-600"
-                : "bg-white text-[#111111] border-gray-200 hover:border-gray-400"
-            }`}
-          >
-            <Video className="w-3.5 h-3.5" />
-            <span>Онлайн</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => onChange({ ...filters, format: "offline" })}
-            className={`flex-1 inline-flex items-center justify-center gap-1 py-2 px-3 text-xs font-semibold uppercase tracking-wider border transition-all text-center cursor-pointer ${
-              filters.format === "offline"
-                ? "bg-[#f8173f] text-white border-[#f8173f]"
-                : "bg-white text-[#111111] border-gray-200 hover:border-gray-400"
-            }`}
-          >
-            <MapPin className="w-3.5 h-3.5" />
-            <span>Оффлайн</span>
-          </button>
+        <div className="lg:col-span-4">
+          <div className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-1.5">
+            Формат участия
+          </div>
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <button
+              type="button"
+              onClick={() => onChange({ ...filters, format: "all" })}
+              className={`flex-1 min-h-[42px] py-2 px-2.5 text-xs font-semibold uppercase tracking-wider border transition-all text-center cursor-pointer select-none ${
+                filters.format === "all"
+                  ? "bg-[#111111] text-white border-[#111111] shadow-xs"
+                  : "bg-[#fbfbf9] text-[#111111] border-gray-300 hover:border-gray-400"
+              }`}
+            >
+              Все
+            </button>
+            <button
+              type="button"
+              onClick={() => onChange({ ...filters, format: "online" })}
+              className={`flex-1 min-h-[42px] inline-flex items-center justify-center gap-1 py-2 px-2.5 text-xs font-semibold uppercase tracking-wider border transition-all text-center cursor-pointer select-none ${
+                filters.format === "online"
+                  ? "bg-emerald-600 text-white border-emerald-600 shadow-xs"
+                  : "bg-[#fbfbf9] text-[#111111] border-gray-300 hover:border-gray-400"
+              }`}
+            >
+              <Video className="w-3.5 h-3.5" />
+              <span>Онлайн</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => onChange({ ...filters, format: "offline" })}
+              className={`flex-1 min-h-[42px] inline-flex items-center justify-center gap-1 py-2 px-2.5 text-xs font-semibold uppercase tracking-wider border transition-all text-center cursor-pointer select-none ${
+                filters.format === "offline"
+                  ? "bg-[#f8173f] text-white border-[#f8173f] shadow-xs"
+                  : "bg-[#fbfbf9] text-[#111111] border-gray-300 hover:border-gray-400"
+              }`}
+            >
+              <MapPin className="w-3.5 h-3.5" />
+              <span>Оффлайн</span>
+            </button>
+          </div>
         </div>
 
         {/* Price Selector (Free / Paid) */}
-        <div className="lg:col-span-4 flex items-center gap-2">
-          <button
-            type="button"
-            onClick={() => onChange({ ...filters, price: "all" })}
-            className={`flex-1 py-2 px-3 text-xs font-semibold uppercase tracking-wider border transition-all text-center cursor-pointer ${
-              filters.price === "all"
-                ? "bg-[#111111] text-white border-[#111111]"
-                : "bg-white text-[#111111] border-gray-200 hover:border-gray-400"
-            }`}
-          >
-            Все цены
-          </button>
-          <button
-            type="button"
-            onClick={() => onChange({ ...filters, price: "free" })}
-            className={`flex-1 py-2 px-3 text-xs font-semibold uppercase tracking-wider border transition-all text-center cursor-pointer ${
-              filters.price === "free"
-                ? "bg-emerald-600 text-white border-emerald-600"
-                : "bg-white text-[#111111] border-gray-200 hover:border-gray-400"
-            }`}
-          >
-            Бесплатно
-          </button>
-          <button
-            type="button"
-            onClick={() => onChange({ ...filters, price: "paid" })}
-            className={`flex-1 py-2 px-3 text-xs font-semibold uppercase tracking-wider border transition-all text-center cursor-pointer ${
-              filters.price === "paid"
-                ? "bg-[#1a2e35] text-white border-[#1a2e35]"
-                : "bg-white text-[#111111] border-gray-200 hover:border-gray-400"
-            }`}
-          >
-            Платно
-          </button>
+        <div className="lg:col-span-4">
+          <div className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-1.5">
+            Стоимость
+          </div>
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <button
+              type="button"
+              onClick={() => onChange({ ...filters, price: "all" })}
+              className={`flex-1 min-h-[42px] py-2 px-2.5 text-xs font-semibold uppercase tracking-wider border transition-all text-center cursor-pointer select-none ${
+                filters.price === "all"
+                  ? "bg-[#111111] text-white border-[#111111] shadow-xs"
+                  : "bg-[#fbfbf9] text-[#111111] border-gray-300 hover:border-gray-400"
+              }`}
+            >
+              Все цены
+            </button>
+            <button
+              type="button"
+              onClick={() => onChange({ ...filters, price: "free" })}
+              className={`flex-1 min-h-[42px] py-2 px-2.5 text-xs font-semibold uppercase tracking-wider border transition-all text-center cursor-pointer select-none ${
+                filters.price === "free"
+                  ? "bg-emerald-600 text-white border-emerald-600 shadow-xs"
+                  : "bg-[#fbfbf9] text-[#111111] border-gray-300 hover:border-gray-400"
+              }`}
+            >
+              Бесплатно
+            </button>
+            <button
+              type="button"
+              onClick={() => onChange({ ...filters, price: "paid" })}
+              className={`flex-1 min-h-[42px] py-2 px-2.5 text-xs font-semibold uppercase tracking-wider border transition-all text-center cursor-pointer select-none ${
+                filters.price === "paid"
+                  ? "bg-[#1a2e35] text-white border-[#1a2e35] shadow-xs"
+                  : "bg-[#fbfbf9] text-[#111111] border-gray-300 hover:border-gray-400"
+              }`}
+            >
+              Платно
+            </button>
+          </div>
         </div>
 
         {/* Resident Organizer Dropdown */}
         <div className="lg:col-span-4">
+          <div className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-1.5">
+            Организатор
+          </div>
           <select
             name="resident"
             aria-label="Резидент-организатор"
             value={filters.resident}
             onChange={(e) => onChange({ ...filters, resident: e.target.value })}
-            className="w-full py-2.5 px-4 bg-white border border-gray-300 text-xs font-semibold uppercase tracking-wider text-[#111111] focus:border-[#f8173f] outline-none transition-colors cursor-pointer"
+            className="w-full min-h-[42px] py-2.5 px-3 bg-[#fbfbf9] border border-gray-300 text-xs font-semibold uppercase tracking-wider text-[#111111] focus:border-[#f8173f] outline-none transition-colors cursor-pointer"
           >
             {RESIDENT_OPTIONS.map((opt) => (
               <option key={opt.value} value={opt.value}>
